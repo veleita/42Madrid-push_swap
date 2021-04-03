@@ -6,8 +6,14 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 13:37:30 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/03 13:37:32 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/03 14:22:14 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <common.h>
+#include <checker.h>
 
+int main(int argc, char **argv)
+{
+	return (0);
+}
