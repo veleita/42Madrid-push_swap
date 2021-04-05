@@ -1,6 +1,8 @@
 PUSH SWAP
----------
+=========
 
+General
+-------
 
 ### Allowed functions
 
@@ -26,8 +28,11 @@ PUSH SWAP
 - rrr  -  rra and rrb at the same time. 
 
 ---
- 
-#### Arguments cooker --FUNCTION--
+
+Code
+----
+
+### Arguments cooker --FUNCTION--
 
 Receives the arguments passed to the checker or push swap programs.
 Checks that
@@ -35,9 +40,9 @@ Checks that
 - The arguments are numbers in the range of an int (-2,147,483,648 to 21,147,483,647). (else, display an error)
 - There are no duplicates. (else, display an error)
 
----
 
-#### Checker --PROGRAM--
+
+### Checker --PROGRAM--
 
 Works with two stacks, a and b. a must be filled with integers passed as arguments. b must be empty.
 
@@ -47,50 +52,43 @@ Reads from stdin until it receives EOF.
 
 After reading and performing the instructions, if the stack a is ordered and b is empty, display OK. Else, display KO.
 
----
 
-#### Push swap --PROGRAM--
+
+### Push swap --PROGRAM--
 
 
 Works with two stacks, a and b. a must be filled with integers passed as arguments. b must be empty.
 It must generate a series of instructions so the numbers in stack a, leaving the stack b empty.
 
-##### **Push swap algorithm**
+#### **Push swap algorithm**
 
 1. Order the numbers of stack a in an array.
 2. Divide the array in chunks from index n to n + x.
 3. In stack b, group together the numbers from stack a that belong to the same chunk. Stack a is left empty.
 4. In stack a, order the numbers from stack b.
-.
-	  ----------------------
-	a | A | B | C | // | Z |
-	  ----------------------
-	  ------------------
-	b | A | B | // | Z |
-	  ------------------
 
-	The algoritm to sort the stack will follow these rules:
+The algoritm to sort the stack will follow these rules:
 
-	**PUSH**
-	- A(b) will only push to a when A(b) > B(b).
-	- If priority is in stack b (see PRIORITY), A(b) will only push to a when A(b) < A(a).
+**PUSH**
+- A(b) will only push to a when A(b) > B(b).
+- If priority is in stack b (see PRIORITY), A(b) will only push to a when A(b) < A(a).
 
-	**SWAP**
-	- In stack b, A will swap with B if A < B && A > C .		EX: b | 3 | 5 | 1 | //	->  | 5 | 3 | 1 | //
-	- In stack a, A will swap with B if A > B .			EX: a | 5 | 3 | //	->  | 3 | 5 | //
+**SWAP**
+- In stack b, A will swap with B if A < B && A > C .            EX: b | 3 | 5 | 1 | //	->  | 5 | 3 | 1 | //
+- In stack a, A will swap with B if A > B .                     EX: a | 5 | 3 | //	->  | 3 | 5 | //
 	
-	**ROTATE**
-	- In stack b, A will rotate if A < B && A < C .			EX: b | 1 | 5 | 3 | //	->  | 5 | 3 | // | 1
-	- In stack a, A will rotate if B + n > C + n .			EX: a | 3 | 5 | 1 | //	->  | 5 | 1 | // | 3
+**ROTATE**
+- In stack b, A will rotate if A < B && A < C .                 EX: b | 1 | 5 | 3 | //	->  | 5 | 3 | // | 1
+- In stack a, A will rotate if B + n > C + n .                  EX: a | 3 | 5 | 1 | //	->  | 5 | 1 | // | 3
 
-	**REVERSE ROTATE**
-	- In stack b, Z will reverse rotate if Z > A && Z in chunk(A)	EX: b | 3 | 1 | // | 5	->  | 5 | 3 | 1 | //
-	- In stack a, Z will reverse rotate if Z > A && Z < B		EX: a | 1 | 5 | // | 3	->  | 3 | 1 | 5 | //
+**REVERSE ROTATE**
+- In stack b, Z will reverse rotate if Z > A && Z in chunk(A)   EX: b | 3 | 1 | // | 5	->  | 5 | 3 | 1 | //
+- In stack a, Z will reverse rotate if Z > A && Z < B           EX: a | 1 | 5 | // | 3	->  | 3 | 1 | 5 | //
 
-	**PRIORITY**
-	- After every push, we will check which stack is more untidy, this one will get the PRIORITY flag.
-	- The other stack will only perform swap, rotate or reverse rotate instructions if the priority stack needs to,
-	  executing for this a double instruction (ss, rr, rrr).
+**PRIORITY**
+- After every push, we will check which stack is more untidy, this one will get the PRIORITY flag.
+- The other stack will only perform swap, rotate or reverse rotate instructions if the priority stack needs to,
+  executing for this a double instruction (ss, rr, rrr).
 
 
 ---
