@@ -16,10 +16,5 @@
 # include <get_next_line.h>
 # include <common.h>
 
-struct		s_stacks
-{
-	t_list	*stack_a;
-	t_list	*stack_b;
-}		t_stacks;
 
 #endif

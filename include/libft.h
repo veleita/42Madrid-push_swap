@@ -14,6 +14,8 @@
 # define LIBFT_H
 
 # include <stdlib.h>
+# include <stdbool.h>
+# include <limits.h>
 
 typedef struct		s_list
 {
@@ -21,5 +23,8 @@ typedef struct		s_list
 	struct s_list	*prev;
 	struct s_list	*next;
 }			t_list;
+
+bool	ft_str_isdigit(char *str);
+int	ft_atoi(char *str);
 
 #endif

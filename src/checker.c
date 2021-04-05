@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <checker.h>
+#include <args_cooker.h>
 
 /*
 ** Create stacks a and b.

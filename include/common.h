@@ -14,7 +14,12 @@
 # define COMMON_H
 
 # include <libft.h>
-# include <stdbool.h>
 # include <unistd.h>
+
+typedef struct	s_stacks
+{
+	t_list	*stack_a;
+	t_list	*stack_b;
+}		t_stacks;
 
 #endif
