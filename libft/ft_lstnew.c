@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   common.h                                           :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/03 14:04:36 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/06 15:33:45 by mzomeno-         ###   ########.fr       */
+/*   Created: 2021/04/06 17:07:19 by mzomeno-          #+#    #+#             */
+/*   Updated: 2021/04/06 17:12:20 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COMMON_H
-# define COMMON_H
+#include "libft.h"
 
-# include <libft.h>
-# include <unistd.h>
-
-typedef struct	s_stacks
+t_list	*ft_lstnew(void *content)
 {
-	t_list		*stack_a;
-	t_list		*stack_b;
-}				t_stacks;
-
-#endif
+	t_list	*lstnew;
+	
+	lstnew = (t_list*)malloc(sizeof(t_list));
+	if (!lstnew)
+		return (NULL);
+	lstnew->content = (void*)content;
+	lstnew->prev = NULL;
+	lstnew->next = NULL;
+	return (lstnew);
+}

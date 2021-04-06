@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:10:08 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/03 14:23:59 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/06 17:32:13 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define CHECKER_H
 
 # include <get_next_line.h>
-# include <common.h>
 
+void	checker(t_stacks *stacks);
 
 #endif

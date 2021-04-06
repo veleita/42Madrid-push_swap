@@ -6,12 +6,40 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 13:37:30 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/03 14:22:14 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/06 16:49:52 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <checker.h>
+#include <common.h>
 #include <args_cooker.h>
+#include <processor.h>
+
+/*
+** Iterate through every node in stack a.
+** If a number in the current node is found to be smaller than the one in the
+** previous node (when it exists), return false.
+** Else, return true.
+*/
+
+bool	is_ordered(t_list *stack)
+{
+	while (stack)
+	{
+		if (stack->prev && (*stack->prev)->content > stack->content)
+			return (false);
+		stack = stack->next;
+	}
+	return (true);
+}
+
+bool	is_empty(t_list *stack)
+{
+	if (stack->content == 0 && stack->next == NULL)
+		return (true);
+	else
+		return (false);
+}
 
 void	checker(t_stacks *stacks)
 {

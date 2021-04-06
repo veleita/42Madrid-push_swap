@@ -1,25 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   common.h                                           :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/03 14:04:36 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/06 15:33:45 by mzomeno-         ###   ########.fr       */
+/*   Created: 2021/04/06 17:12:48 by mzomeno-          #+#    #+#             */
+/*   Updated: 2021/04/06 17:32:05 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COMMON_H
-# define COMMON_H
 
-# include <libft.h>
-# include <unistd.h>
-
-typedef struct	s_stacks
-{
-	t_list		*stack_a;
-	t_list		*stack_b;
-}				t_stacks;
-
-#endif
