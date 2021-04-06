@@ -69,6 +69,10 @@ It must generate a series of instructions so the numbers in stack a, leaving the
 
 The algoritm to sort the stack will follow these rules:
 
+a -> | A | B | C | // | Z |
+
+b -> | A | B | C | // | Z |
+
 **PUSH**
 - A(b) will only push to a when A(b) > B(b).
 - If priority is in stack b (see PRIORITY), A(b) will only push to a when A(b) < A(a).
