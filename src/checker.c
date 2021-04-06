@@ -13,14 +13,23 @@
 #include <checker.h>
 #include <args_cooker.h>
 
+void	checker(t_stacks *stacks)
+{
+	if (is_ordered(stacks->a) && is_empty(stacks->b))
+		write(1, "OK\n", 3);
+	else
+		write(1, "KO\n", 3);
+}
+
 /*
 ** Create stacks a and b.
 ** Read and execute instructions from stdin.
 ** Check if stack a is ordered and stack b is empty.
 */
+
 int main(int argc, char **argv)
 {
-	t_stacks	stacks;
+	t_stacks	*stacks;
 	char		*instruction;
 
 	stacks = args_cooker(argc, argv);
