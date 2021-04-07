@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 15:33:54 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/06 17:32:04 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/07 13:25:31 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ t_stacks *args_cooker(int argc, char **argv)
 {
 	t_stacks	*stacks;
 
-	stacks = malloc(sizeof(*stacks));
 	if (argc == 1)
 		return (0);
+	stacks = malloc(sizeof(*stacks));
 	while (*argv)
 	{
 		if (ft_str_isdigit(*argv))

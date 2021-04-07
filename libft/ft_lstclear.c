@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/07 12:02:25 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/07 13:25:29 by mzomeno-         ###   ########.fr       */
+/*   Created: 2021/04/07 12:39:59 by mzomeno-          #+#    #+#             */
+/*   Updated: 2021/04/07 12:43:38 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
-int	simple_error(void)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	write(2, "Error\n", 7);
-	return (0);
-}
-
-int	free_and_error(t_stacks *stacks)
-{
-	if (stacks->a)
-		ft_lstclear(&stacks->a, ft_set_null);
-	if (stacks->b)
-		ft_lstclear(&stacks->b, ft_set_null);
+	while ((*lst)->next != NULL)
+	{
+		ft_lstdelone(*lst, del);
+		*lst = (*lst)->next;
+	}
+	ft_lstdelone(*lst, del);
+	*lst = NULL;
 }
