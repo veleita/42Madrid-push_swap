@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 13:09:17 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/07 13:25:25 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/07 14:03:34 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,7 @@ typedef struct s_list
 t_list	*ft_lstnew(void *content);
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstdelone(t_list *lst, void (*del)(void *));
+void	ft_lstadd_back(t_list **lst, t_list *newlst);
+t_list	*ft_lstlast(t_list *lst);
 
 #endif
