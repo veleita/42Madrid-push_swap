@@ -77,17 +77,33 @@ b -> | A | B | C | // | Z |
 - A(b) will only push to a when A(b) > B(b).
 - If priority is in stack b (see PRIORITY), A(b) will only push to a when A(b) < A(a).
 
+
 **SWAP**
-- In stack b, A will swap with B if A < B && A > C .            EX: b | 3 | 5 | 1 | //	->  | 5 | 3 | 1 | //
-- In stack a, A will swap with B if A > B .                     EX: a | 5 | 3 | //	->  | 3 | 5 | //
+
+In stack b, A will swap with B if A < B && A > C .  
+EX: b | 3 | 5 | 1 | //	->  | 5 | 3 | 1 | //
+
+In stack a, A will swap with B if A > B .                     
+EX: a | 5 | 3 | //	->  | 3 | 5 | //
+	
 	
 **ROTATE**
-- In stack b, A will rotate if A < B && A < C .                 EX: b | 1 | 5 | 3 | //	->  | 5 | 3 | // | 1
-- In stack a, A will rotate if B + n > C + n .                  EX: a | 3 | 5 | 1 | //	->  | 5 | 1 | // | 3
+
+In stack b, A will rotate if A < B && A < C .                 
+EX: b | 1 | 5 | 3 | //	->  | 5 | 3 | // | 1
+
+In stack a, A will rotate if B + n > C + n .                  
+EX: a | 3 | 5 | 1 | //	->  | 5 | 1 | // | 3
+
 
 **REVERSE ROTATE**
-- In stack b, Z will reverse rotate if Z > A && Z in chunk(A)   EX: b | 3 | 1 | // | 5	->  | 5 | 3 | 1 | //
-- In stack a, Z will reverse rotate if Z > A && Z < B           EX: a | 1 | 5 | // | 3	->  | 3 | 1 | 5 | //
+
+In stack b, Z will reverse rotate if Z > A && Z in chunk(A)   
+EX: b | 3 | 1 | // | 5	->  | 5 | 3 | 1 | //
+
+In stack a, Z will reverse rotate if Z > A && Z < B           
+EX: a | 1 | 5 | // | 3	->  | 3 | 1 | 5 | //
+
 
 **PRIORITY**
 - After every push, we will check which stack is more untidy, this one will get the PRIORITY flag.
@@ -99,4 +115,4 @@ b -> | A | B | C | // | Z |
 
 ### To do
 
-- Determine what must be the proportion between the size of the chunk and the size in of the chunk.
+- Determine what must be the proportion between the size of the chunk and the number of numbers to sort.
