@@ -6,11 +6,12 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 12:02:25 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/07 13:56:07 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/08 20:04:33 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
+#include <common.h>
 
 int	simple_error(void)
 {
@@ -18,12 +19,13 @@ int	simple_error(void)
 	return (0);
 }
 
-int	free_and_error(t_stacks *stacks)
+t_stacks	*free_and_error(t_stacks *stacks)
 {
 	if (stacks->a)
-		ft_lstclear(&stacks->a, ft_set_null);
+		ft_lstclear(&stacks->a, free);
 	if (stacks->b)
-		ft_lstclear(&stacks->b, ft_set_null);
+		ft_lstclear(&stacks->b, free);
 	free(stacks);
-	return(simple_error());
+	write(2, "Error\n", 7);
+	return(0);
 }

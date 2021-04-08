@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 17:07:19 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/07 14:03:40 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/08 18:25:38 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 t_list	*ft_lstnew(void *content)
 {
+	t_list *lstnew;
 
 	lstnew = (t_list*)malloc(sizeof(t_list));
 	if (!lstnew)

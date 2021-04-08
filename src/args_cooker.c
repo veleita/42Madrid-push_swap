@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 15:33:54 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/07 13:55:06 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/08 20:21:04 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,23 @@
 t_stacks *args_cooker(int argc, char **argv)
 {
 	t_stacks	*stacks;
+	int			*number;
 
 	if (argc == 1)
 		return (0);
 	stacks = malloc(sizeof(*stacks));
+	stacks->a = ft_lstnew(*argv);
+	argv++;
 	while (*argv)
 	{
 		if (ft_str_isdigit(*argv))
 			return(free_and_error(stacks));
 		if (ft_strlen(*argv) > 11 &&
-			(ft_atoi(*argv) > INT_MAX || ft_atoi(*argv) < INT_MIN)
+			(ft_atoi(*argv) > INT_MAX || ft_atoi(*argv) < INT_MIN))
 			return(free_and_error(stacks));
-		ft_lstadd_back(&(stack->a), ft_lstnew(ft_atoi(*argv))); // THIS CAN BE PROBLEMATIC
+		number = malloc(sizeof(int));
+		*number = ft_atoi(*argv);
+		ft_lstadd_back(&(stacks->a), ft_lstnew(number)); // THIS CAN BE PROBLEMATIC
 		argv++;
 	}
 	stacks->b = ft_lstnew(0); // THIS TOO

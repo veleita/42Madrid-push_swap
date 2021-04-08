@@ -3,6 +3,6 @@
 
 # include <common.h>
 
-t_stacks args_cooker(int argc, char **argv);
+t_stacks *args_cooker(int argc, char **argv);
 
 #endif

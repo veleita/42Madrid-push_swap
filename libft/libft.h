@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 13:09:17 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/07 14:03:34 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/08 19:47:35 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,20 @@
 ** Is_something?
 */
 
+bool	ft_isdigit(char c);
 bool	ft_str_isdigit(char *str);
+
+/*
+** Len
+*/
+
+size_t	ft_strlen(const char *str);
 
 /*
 ** Data type transformation
 */
 
-int		ft_atoi(char *str);
-
-/*
-** Clean
-*/
-
-void	ft_set_null(void *var);
+int		ft_atoi(const char *str);
 
 /*
 ** Lists

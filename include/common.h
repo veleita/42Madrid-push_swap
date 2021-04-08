@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:04:36 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/06 15:33:45 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/08 20:05:06 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,15 @@
 
 typedef struct	s_stacks
 {
-	t_list		*stack_a;
-	t_list		*stack_b;
+	t_list		*a;
+	t_list		*b;
 }				t_stacks;
+
+/*
+** Error
+*/
+
+int			simple_error(void);
+t_stacks	*free_and_error(t_stacks *stacks);
 
 #endif

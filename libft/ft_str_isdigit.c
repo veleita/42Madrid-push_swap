@@ -1,40 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_str_isdigit.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/06 17:12:48 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/08 18:32:50 by mzomeno-         ###   ########.fr       */
+/*   Created: 2021/04/08 20:06:40 by mzomeno-          #+#    #+#             */
+/*   Updated: 2021/04/08 20:09:12 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_atoi(const char *str)
+bool	ft_str_isdigit(char *str)
 {
-	int i;
-	int sign;
-
-	sign = 1;
-	i = 0;
-	while (*str == '\t' || *str == '\n' || *str == '\v' || *str == '\f' ||
-			*str == '\r' || *str == ' ')
-		str++;
-	if (*str == '+' || *str == '-')
+	while (str)
 	{
-		str++;
-		if (*str == '-')
-			sign = -1;
-	}
-	while (ft_isdigit(*str))
-	{
-		if (ft_isdigit(*(str + 1)))
-			i = (i + *str - '0') * 10;
-		else
-			i += *str - '0';
+		if (ft_isdigit(*str) == false)
+			return (false);
 		str++;
 	}
-	return (i * sign);
+	return (true);
 }

@@ -1,40 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/06 17:12:48 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/08 18:32:50 by mzomeno-         ###   ########.fr       */
+/*   Created: 2021/04/08 19:43:02 by mzomeno-          #+#    #+#             */
+/*   Updated: 2021/04/08 20:05:38 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_atoi(const char *str)
+size_t ft_strlen(const char *str)
 {
-	int i;
-	int sign;
+	size_t len;
 
-	sign = 1;
-	i = 0;
-	while (*str == '\t' || *str == '\n' || *str == '\v' || *str == '\f' ||
-			*str == '\r' || *str == ' ')
-		str++;
-	if (*str == '+' || *str == '-')
-	{
-		str++;
-		if (*str == '-')
-			sign = -1;
-	}
-	while (ft_isdigit(*str))
-	{
-		if (ft_isdigit(*(str + 1)))
-			i = (i + *str - '0') * 10;
-		else
-			i += *str - '0';
-		str++;
-	}
-	return (i * sign);
+	len = 0;
+	while (str[len])
+		len++;
+	return (len);
 }
