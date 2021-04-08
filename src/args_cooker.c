@@ -6,12 +6,21 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 15:33:54 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/08 20:21:04 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/08 21:58:06 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <args_cooker.h>
 #include <common.h>
+
+bool	is_small_num(char *num)
+{
+	if (ft_strlen(num) < 11)
+	   return (true);
+	else if (ft_strlen(num) == 11 &&
+		(ft_atoi_long(*argv) > INT_MAX || ft_atoi_long(*argv) < INT_MIN))
+		return(false);
+}
 
 /*
 ** If there are no arguments, return cleanly
@@ -28,10 +37,9 @@ t_stacks *args_cooker(int argc, char **argv)
 
 	if (argc == 1)
 		return (0);
-	stacks = malloc(sizeof(*stacks));
-	stacks->a = ft_lstnew(*argv);
-	argv++;
-	while (*argv)
+	stacks = (t_stacks*)ft_calloc(2, sizeof(t_list));
+	stacks->a = NULL;
+	while (*(++argv))
 	{
 		if (ft_str_isdigit(*argv))
 			return(free_and_error(stacks));
@@ -41,7 +49,6 @@ t_stacks *args_cooker(int argc, char **argv)
 		number = malloc(sizeof(int));
 		*number = ft_atoi(*argv);
 		ft_lstadd_back(&(stacks->a), ft_lstnew(number)); // THIS CAN BE PROBLEMATIC
-		argv++;
 	}
 	stacks->b = ft_lstnew(0); // THIS TOO
 	return (stacks);

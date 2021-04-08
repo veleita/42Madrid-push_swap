@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 13:09:17 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/08 19:47:35 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/08 20:53:14 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,13 @@ size_t	ft_strlen(const char *str);
 */
 
 int		ft_atoi(const char *str);
+
+/*
+ * Initialize
+*/
+
+void	ft_bzero(void *s, size_t n);
+void	*ft_calloc(size_t count, size_t size);
 
 /*
 ** Lists

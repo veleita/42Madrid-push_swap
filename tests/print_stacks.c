@@ -18,7 +18,7 @@ int main(int argc, char **argv)
 	a = stacks->a;
 	while (a)
 	{
-		printf("->| %d |<-\n", (int)a->content);
+		printf("->| %d |<-\n", *((int*)(a->content)));
 		a = a->next;
 	}
 }
