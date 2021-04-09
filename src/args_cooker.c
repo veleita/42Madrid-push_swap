@@ -6,20 +6,23 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 15:33:54 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/08 21:58:06 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/09 13:23:16 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <args_cooker.h>
 #include <common.h>
+#include <libft.h>
 
-bool	is_small_num(char *num)
+static bool	is_small_num(char *num)
 {
 	if (ft_strlen(num) < 11)
 	   return (true);
 	else if (ft_strlen(num) == 11 &&
-		(ft_atoi_long(*argv) > INT_MAX || ft_atoi_long(*argv) < INT_MIN))
-		return(false);
+		(ft_atol(num) <= INT_MAX && ft_atol(num) >= INT_MIN))
+		return(true);
+	else
+		return (false);
 }
 
 /*
@@ -41,10 +44,9 @@ t_stacks *args_cooker(int argc, char **argv)
 	stacks->a = NULL;
 	while (*(++argv))
 	{
-		if (ft_str_isdigit(*argv))
+		if (ft_str_isdigit(*argv) == false && **argv != '-')
 			return(free_and_error(stacks));
-		if (ft_strlen(*argv) > 11 &&
-			(ft_atoi(*argv) > INT_MAX || ft_atoi(*argv) < INT_MIN))
+		if (is_small_num(*argv) == false)
 			return(free_and_error(stacks));
 		number = malloc(sizeof(int));
 		*number = ft_atoi(*argv);

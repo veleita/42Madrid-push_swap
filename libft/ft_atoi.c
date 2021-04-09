@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 17:12:48 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/08 18:32:50 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/09 13:22:18 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ int		ft_atoi(const char *str)
 		str++;
 	if (*str == '+' || *str == '-')
 	{
-		str++;
 		if (*str == '-')
 			sign = -1;
+		str++;
 	}
 	while (ft_isdigit(*str))
 	{
