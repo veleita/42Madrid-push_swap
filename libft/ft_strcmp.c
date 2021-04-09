@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_isdigit.c                                   :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/08 20:06:40 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/09 13:43:23 by mzomeno-         ###   ########.fr       */
+/*   Created: 2021/04/09 13:48:29 by mzomeno-          #+#    #+#             */
+/*   Updated: 2021/04/09 13:58:32 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-bool	ft_str_isdigit(char *str)
+int		ft_strcmp(const char *s1, const char *s2)
 {
-	while (*str)
+	while (*s1 || *s2)
 	{
-		if (ft_isdigit(*str) == false)
-			return (false);
-		str++;
+		if (*s1 != *s2)
+			return ((unsigned char)*s1 - (unsigned char)*s2);
+		s1++;
+		s2++;
 	}
-	return (true);
+	return (0);
 }

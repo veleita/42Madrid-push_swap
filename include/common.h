@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:04:36 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/08 20:05:06 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/09 13:46:38 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct	s_stacks
 ** Error
 */
 
-int			simple_error(void);
-t_stacks	*free_and_error(t_stacks *stacks);
+void		simple_error(void);
+void		*free_and_error(t_stacks *stacks);
 
 #endif
