@@ -6,11 +6,12 @@
 #    By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/08 18:36:36 by mzomeno-          #+#    #+#              #
-#    Updated: 2021/04/08 20:25:21 by mzomeno-         ###   ########.fr        #
+#    Updated: 2021/04/12 19:02:54 by mzomeno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= push_swap
+PUSH_SWAP	= push_swap
+CHECKER = checker
 
 TEST	= test
 
@@ -24,26 +25,27 @@ HEADERS = $(shell find $(INCLUDE_DIR) -name "*.h")
 LIBFT = libft.a
 LIBFT_DIR = libft/
 
-#SRC_DIR = src/
-SRC = tests/print_stacks.c src/args_cooker.c src/common/error.c
+GNL_DIR = get_next_line
+# SRC_GNL = $(shell find $(GNL_DIR) -name  "*.c" | xargs -I % $(SHELL) -c 'echo % | cut -c 15-')
+
+SRC_DIR = src/
+SRC_CHECKER = $(shell find $(SRC_DIR) -name  "*.c" | xargs -I % $(SHELL) -c 'echo % | cut -c 6-')
 
 OBJ_DIR = obj/
-OBJS =	$(OBJ_DIR)print_stacks.o \
-		$(OBJ_DIR)args_cooker.o \
-		$(OBJ_DIR)error.o
+OBJS = $(addprefix $(OBJ_DIR), $(SRC_CHECKER:.c=.o))
 
-all: $(TEST)
+all: $(CHECKER)
 
-$(OBJS): $(SRC)
-		$(CC) -g $(CFLAGS) -I $(INCLUDE_DIR) -c tests/print_stacks.c -o $(OBJ_DIR)print_stacks.o
-		$(CC) -g $(CFLAGS) -I $(INCLUDE_DIR) -c src/common/error.c -o $(OBJ_DIR)error.o
-		$(CC) -g $(CFLAGS) -I $(INCLUDE_DIR) -c src/args_cooker.c -o $(OBJ_DIR)args_cooker.o
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c
+		$(CC) $(CFLAGS) -I $(INCLUDE_DIR) -c $< -o $@
 
-$(TEST): $(OBJ_DIR) $(OBJS) $(LIBFT)
-	$(CC) -g $(OBJS) $(LIBFT_DIR)$(LIBFT) $(CFLAGS) -o $(TEST)
+$(CHECKER): $(OBJ_DIR) $(OBJS) $(LIBFT)
+	$(CC) $(OBJS) $(LIBFT_DIR)$(LIBFT) $(CFLAGS) -o $(CHECKER)
 
 $(OBJ_DIR):
-	mkdir obj
+	mkdir $(OBJ_DIR)
+	mkdir $(OBJ_DIR)common
+	mkdir $(OBJ_DIR)$(GNL_DIR)
 
 $(LIBFT): $(LIBFT_DIR)
 	$(MAKE) -C $(LIBFT_DIR) re
@@ -53,7 +55,7 @@ clean:
 		@$(MAKE) -C $(LIBFT_DIR) fclean
 
 fclean:		clean
-		@rm -f $(TEST)
+		@rm -f $(CHECKER) $(PUSH_SWAP)
 		@echo Objects and executable file erased, bye!
 
 re: fclean all

@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 13:37:30 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/08 17:15:39 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/12 18:55:09 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ bool	is_ordered(t_list *stack)
 {
 	while (stack)
 	{
-		if (stack->prev && (*stack->prev)->content > stack->content)
+		if (stack->prev && (stack->prev)->content > stack->content)
 			return (false);
 		stack = stack->next;
 	}
@@ -63,7 +63,7 @@ int main(int argc, char **argv)
 	stacks = args_cooker(argc, argv);
 	if (!stacks)
 		return (-1);
-	while (get_next_line(0, &instruction, 5))
+	while (get_next_line(0, &instruction))
 	{
 		if (process_instruction(instruction, stacks) == -1)
 		{
