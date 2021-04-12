@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   test_gnl.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/10 12:17:14 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/12 15:24:21 by mzomeno-         ###   ########.fr       */
+/*   Created: 2021/04/12 13:45:01 by mzomeno-          #+#    #+#             */
+/*   Updated: 2021/04/12 17:03:48 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE
-# define GET_NEXT_LINE
+#include <get_next_line.h>
+#include <stdio.h>
+#include <fcntl.h>
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 60
-# endif
+int main()
+{
+	int fd = 0;
+	char *line;
 
-# ifndef NUM_FDS
-#  define NUM_FDS 20
-# endif
-
-int	get_next_line(int fd, char **line);
-
-#endif
+	while (get_next_line(fd, &line))
+		printf("line = -> %s <-\n", line);
+	printf("line = -> %s <-\n", line);
+	return (0);
+}

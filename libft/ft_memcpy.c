@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/10 12:17:14 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/12 15:24:21 by mzomeno-         ###   ########.fr       */
+/*   Created: 2021/04/12 15:30:57 by mzomeno-          #+#    #+#             */
+/*   Updated: 2021/04/12 15:50:51 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE
-# define GET_NEXT_LINE
+#include "libft.h"
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 60
-# endif
+void	*ft_memcpy(void *dst, const void *src, size_t n)
+{
+	char		*pdst;
+	const char	*psrc;
 
-# ifndef NUM_FDS
-#  define NUM_FDS 20
-# endif
+	pdst = (char*)dst;
+	psrc = (const char*)src;
+	if (src == dst)
+		return (dst);
+	while (n--)
+		*(pdst++) = *(psrc++);
+	return (dst);
+}
 
-int	get_next_line(int fd, char **line);
-
-#endif

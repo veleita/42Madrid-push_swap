@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 13:09:17 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/09 13:56:21 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/12 16:59:30 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,14 @@ bool	ft_str_isdigit(char *str);
 size_t	ft_strlen(const char *str);
 
 /*
+** Cpy
+*/
+
+void	*ft_memcpy(void *dst, const void *src, size_t n);
+char	*ft_strdup(const char *s1);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+
+/*
 ** Cmp
 */
 
@@ -45,11 +53,24 @@ int		ft_atoi(const char *str);
 long	ft_atol(const char *str);
 
 /*
+** String manipulation
+*/
+
+char	*ft_strjoin(char const *s1, char const *s2);
+
+/*
  * Initialize
 */
 
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t count, size_t size);
+
+/*
+** Find
+*/
+
+char	*ft_strchr(const char *s, int c);
+int		ft_strchr_index(char *s, char c);
 
 /*
 ** Lists

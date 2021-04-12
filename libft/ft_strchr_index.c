@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strchr_indew.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/10 12:17:14 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/12 15:24:21 by mzomeno-         ###   ########.fr       */
+/*   Created: 2021/04/12 16:40:42 by mzomeno-          #+#    #+#             */
+/*   Updated: 2021/04/12 16:51:27 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE
-# define GET_NEXT_LINE
+#include "libft.h"
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 60
-# endif
+int	ft_strchr_index(char *s, char c)
+{
+	int	it;
 
-# ifndef NUM_FDS
-#  define NUM_FDS 20
-# endif
-
-int	get_next_line(int fd, char **line);
-
-#endif
+	it = 0;
+	while (s[it])
+	{
+		if (s[it++] == c)
+			return (it);
+	}
+	return (0);
+}

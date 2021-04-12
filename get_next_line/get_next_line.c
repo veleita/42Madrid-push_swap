@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 12:14:21 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/10 13:18:19 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/12 17:06:50 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ bool		read_to_buffer(int fd, char **buffer)
 		return (false);
 	else
 	{
-		*buffer[len] = '\0';
+		(*buffer)[len] = '\0';
 		return (true);
 	}
 }
@@ -43,47 +43,53 @@ int			empty_file(char **line)
 	return (0);
 }
 
-int			complete_line()
+int			complete_line(int fd, char *buffer, char *file[NUM_FDS])
 {
-	bool		read;
+	char *tmp;
 
 	while (!ft_strchr(buffer, '\n'))
 	{
-		read = read_to_buffer(fd, &buffer);
-		if (read == false)
-			return (empty_file(line));
+		if (read_to_buffer(fd, &buffer) == false)
+			return (0);
 		tmp = ft_strjoin(file[fd], buffer);
 		free(file[fd]);
 		file[fd] = tmp;
 	}
+	return (1);
+}
+
+int			save_line(char **line, char *file[NUM_FDS], int fd, int newline)
+{
+	char *tmp;
+
+	*line = ft_substr(file[fd], 0, newline - 1);
+	tmp = ft_strdup(&file[fd][newline]);
+	free(file[fd]);
+	file[fd] = tmp;
+	if (*file[fd] == '\0')
+		return (0);
+	else
+		return (1);
 }
 
 int			get_next_line(int fd, char **line)
 {
 	char		*buffer;
-	char		*tmp;
 	static char	*file[NUM_FDS];
-	int			len;
+	int			newline;
 
-	buffer = (char*)ft_calloc(BUFFER_SIZE + 1);
+	buffer = (char*)ft_calloc(sizeof(char), BUFFER_SIZE + 1);
 	if (!buffer || !line || fd < 0)
 		simple_error();
 	if (file[fd] == NULL)
 	{
-		read_to_buffer(fd, &buffer);
+		if (read_to_buffer(fd, &buffer) == false)
+			return (empty_file(line));
 		file[fd] = ft_strdup(buffer);
 	}
-	else
-	{
-		newline = ft_strchr(file[fd], '\n');
-		if (newline)
-		{
-			*line = ft_substr(file[fd], 0, newline - 1);
-			tmp = ft_strdup(&file[fd][newline]);
-			free(file[fd]);
-			file[fd] = tmp;
-		}
-		else
-			complete_line();
-	}
+	newline = ft_strchr_index(file[fd], '\n');
+	if (!newline)
+		if (complete_line(fd, buffer, file) == 0)
+			return (empty_file(line));
+	return (save_line(line, file, fd, newline));
 }
