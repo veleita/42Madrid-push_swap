@@ -18,8 +18,8 @@
 
 typedef struct	s_stacks
 {
-	t_list		*a;
-	t_list		*b;
+	int		*a;
+	int		*b;
 }				t_stacks;
 
 /*

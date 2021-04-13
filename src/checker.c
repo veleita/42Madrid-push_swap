@@ -22,23 +22,22 @@
 ** Else, return true.
 */
 
-bool	is_ordered(t_list *stack)
+bool	is_ordered(int *stack)
 {
-	while (stack)
-	{
-		if (stack->prev && (stack->prev)->content > stack->content)
+	while (++stack)
+		if (*(stack - 1) > *stack)
 			return (false);
-		stack = stack->next;
-	}
 	return (true);
 }
 
-bool	is_empty(t_list *stack)
+bool	is_empty(int *stack)
 {
-	if (stack->content == 0 && stack->next == NULL)
-		return (true);
-	else
-		return (false);
+	while (stack)
+	{
+		if (*stack != 0)
+			return (false);
+	}
+	return (true);
 }
 
 void	checker(t_stacks *stacks)
@@ -59,11 +58,15 @@ int main(int argc, char **argv)
 {
 	t_stacks	*stacks;
 	char		*instruction;
+	int		read;
 
 	stacks = args_cooker(argc, argv);
 	if (!stacks)
 		return (-1);
-	while (get_next_line(0, &instruction))
+	read = get_next_line(0, &instruction);
+	if (read == -1)
+		simple_error();
+	while (read >= 0)
 	{
 		if (process_instruction(instruction, stacks) == -1)
 		{
@@ -71,6 +74,8 @@ int main(int argc, char **argv)
 			return (-1);
 		}
 		free(instruction);
+		if (read == 0)
+			break ;
 	}
 	checker(stacks);
 	return (0);
