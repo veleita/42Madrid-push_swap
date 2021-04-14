@@ -20,6 +20,7 @@ typedef struct	s_stacks
 {
 	int		*a;
 	int		*b;
+	int		size;
 }				t_stacks;
 
 /*
@@ -27,6 +28,7 @@ typedef struct	s_stacks
 */
 
 void		simple_error(void);
-void		*free_and_error(t_stacks *stacks);
+void		free_stacks(t_stacks *stacks);
+void		free_and_error(t_stacks *stacks);
 
 #endif

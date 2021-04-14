@@ -19,13 +19,18 @@ void		simple_error(void)
 	exit(0);
 }
 
-void		*free_and_error(t_stacks *stacks)
+void		free_stacks(t_stacks *stacks)
 {
 	if (stacks->a)
 		free(stacks->a);
 	if (stacks->b)
 		free(stacks->b);
 	free(stacks);
+}
+
+void		free_and_error(t_stacks *stacks)
+{
+	free_stacks(stacks);
 	write(2, "Error\n", 7);
 	exit(0);
 }

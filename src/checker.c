@@ -81,5 +81,6 @@ int main(int argc, char **argv)
 			break ;
 	}
 	checker(stacks, argc - 1);
+	free_stacks(stacks);
 	return (0);
 }

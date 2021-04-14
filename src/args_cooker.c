@@ -39,13 +39,14 @@ void		check_args(char **argv, int i, t_stacks *stacks)
 			free_and_error(stacks);
 }
 
-t_stacks	*create_stacks(int argc)
+t_stacks	*create_stacks(int args)
 {
 	t_stacks	*stacks;
 
 	stacks = (t_stacks*)malloc(sizeof(*stacks));
-	stacks->a = ft_calloc(argc - 1, sizeof(int));
-	stacks->b = ft_calloc(argc - 1, sizeof(int));
+	stacks->a = ft_calloc(args, sizeof(int));
+	stacks->b = ft_calloc(args, sizeof(int));
+	stacks->size = args;
 	return (stacks);
 }
 
@@ -64,7 +65,7 @@ t_stacks *args_cooker(int argc, char **argv)
 
 	if (argc == 1)
 		return (0);
-	stacks = create_stacks(argc);
+	stacks = create_stacks(argc - 1);
 	i = 0;
 	while (argv[++i])
 	{
