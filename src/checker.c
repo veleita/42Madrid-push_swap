@@ -22,27 +22,30 @@
 ** Else, return true.
 */
 
-bool	is_ordered(int *stack)
+bool	is_ordered(int *stack, int size)
 {
-	while (++stack)
-		if (*(stack - 1) > *stack)
-			return (false);
-	return (true);
-}
-
-bool	is_empty(int *stack)
-{
-	while (stack)
+	while (--size)
 	{
-		if (*stack != 0)
+		stack++;
+		if (*(stack - 1) > *stack)
 			return (false);
 	}
 	return (true);
 }
 
-void	checker(t_stacks *stacks)
+bool	is_empty(int *stack, int size)
 {
-	if (is_ordered(stacks->a) && is_empty(stacks->b))
+	while (--size)
+	{
+		if (*(stack++) != 0)
+			return (false);
+	}
+	return (true);
+}
+
+void	checker(t_stacks *stacks, int size)
+{
+	if (is_ordered(stacks->a, size) && is_empty(stacks->b, size))
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);
@@ -77,6 +80,6 @@ int main(int argc, char **argv)
 		if (read == 0)
 			break ;
 	}
-	checker(stacks);
+	checker(stacks, argc - 1);
 	return (0);
 }
