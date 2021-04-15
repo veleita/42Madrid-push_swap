@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 13:37:30 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/12 18:55:09 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/15 19:31:19 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,19 @@ int main(int argc, char **argv)
 {
 	t_stacks	*stacks;
 	char		*instruction;
+	bool		verbose;
 
-	stacks = args_cooker(argc, argv);
+	verbose = 0;
+	if (argv[1][0] == '-')
+		if (argv[1][1] == 'v' && argv[1][2] == '\0')
+			verbose = 1;
+	stacks = args_cooker(argc - verbose, argv);
 	if (!stacks)
 		return (-1);
-	while (get_next_line(0, &instruction))
+	while (get_next_line(0, &instruction) >= 0)
 	{
+		if (verbose)
+			print_stacks(stacks);
 		if (process_instruction(instruction, stacks) == -1)
 		{
 			free(instruction);
