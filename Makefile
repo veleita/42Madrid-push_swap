@@ -17,7 +17,7 @@ TEST	= test
 
 CC = gcc
 SHELL = sh
-CFLAGS += -Wall -Wextra -Werror
+CFLAGS += -g -Wall -Wextra -Werror
 
 INCLUDE_DIR = include/
 HEADERS = $(shell find $(INCLUDE_DIR) -name "*.h")
@@ -29,7 +29,7 @@ GNL_DIR = get_next_line
 # SRC_GNL = $(shell find $(GNL_DIR) -name  "*.c" | xargs -I % $(SHELL) -c 'echo % | cut -c 15-')
 
 SRC_DIR = src/
-SRC_CHECKER = $(shell find $(SRC_DIR) -name  "*.c" | xargs -I % $(SHELL) -c 'echo % | cut -c 6-')
+SRC_CHECKER = $(shell find $(SRC_DIR) -name  "*.c" | xargs -I % $(SHELL) -c 'echo % | cut -c 5-')
 
 OBJ_DIR = obj/
 OBJS = $(addprefix $(OBJ_DIR), $(SRC_CHECKER:.c=.o))

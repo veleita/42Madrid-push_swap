@@ -16,6 +16,6 @@
 # include <get_next_line.h>
 # include <common.h>
 
-void	checker(t_stacks *stacks);
+void	checker(t_stacks *stacks, int size);
 
 #endif

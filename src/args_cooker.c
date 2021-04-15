@@ -25,6 +25,30 @@ static bool	is_small_num(char *num)
 		return (false);
 }
 
+void		check_args(char **argv, int i, t_stacks *stacks)
+{
+	int	j;
+
+	if (ft_str_isdigit(argv[i]) == false && argv[i][0] != '-')
+		free_and_error(stacks);
+	if (is_small_num(argv[i]) == false)
+		free_and_error(stacks);
+	j = i;
+	while (ft_strcmp(argv[j--], argv[0]))
+		if (ft_strcmp(argv[j], argv[i]) == 0)
+			free_and_error(stacks);
+}
+
+t_stacks	*create_stacks(int args)
+{
+	t_stacks	*stacks;
+
+	stacks = (t_stacks*)malloc(sizeof(*stacks));
+	stacks->a = ft_calloc(args, sizeof(int));
+	stacks->b = ft_calloc(args, sizeof(int));
+	stacks->size = args;
+	return (stacks);
+}
 
 /*
 ** If there are no arguments, return cleanly
@@ -37,29 +61,16 @@ static bool	is_small_num(char *num)
 t_stacks *args_cooker(int argc, char **argv)
 {
 	t_stacks	*stacks;
-	int			*number;
 	int			i;
-	int			j;
 
 	if (argc == 1)
 		return (0);
-	stacks = (t_stacks*)ft_calloc(2, sizeof(t_list));
-	stacks->a = NULL;
+	stacks = create_stacks(argc - 1);
 	i = 0;
 	while (argv[++i])
 	{
-		if (ft_str_isdigit(argv[i]) == false && argv[i][0] != '-')
-			free_and_error(stacks);
-		if (is_small_num(argv[i]) == false)
-			free_and_error(stacks);
-		j = i;
-		while (ft_strcmp(argv[j--], argv[0]))
-			if (ft_strcmp(argv[j], argv[i]) == 0)
-				free_and_error(stacks);
-		number = malloc(sizeof(int));
-		*number = ft_atoi(argv[i]);
-		ft_lstadd_back(&(stacks->a), ft_lstnew(number)); // THIS CAN BE PROBLEMATIC
+		check_args(argv, i, stacks);
+		stacks->a[i - 1] = ft_atoi(argv[i]);
 	}
-	stacks->b = ft_lstnew(0); // THIS TOO
 	return (stacks);
 }
