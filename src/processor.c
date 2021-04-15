@@ -6,80 +6,85 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 15:31:10 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/12 18:50:54 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/15 20:41:43 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <processor.h>
+#include <instructions.h>
 #include <common.h>
-
-void	do_the_swap(int *stack)
-{
-	int save;
-
-	save = stack[0];
-	stack[0] = stack[1];
-	stack[1] = save;
-}
+#include <libft.h>
 
 void	swap_ins(char *instruction, t_stacks *stacks)
 {
-	if (ft_strlen(instruction) > 2)
-		free_and_error(stacks);
 	if (*(instruction + 1) == 'a')
 		do_the_swap(stacks->a);
 	else if (*(instruction + 1) == 'b')
 		do_the_swap(stacks->b);
-	else
-		free_and_error(stacks);
-}
-
-void	do_the_push(int *src, int *dst, int size)
-{
-	int save;
-	int prev;
-	int index;
-
-	while (index < size)
+	else if (*(instruction + 1) == 's')
 	{
-		if (index == 0)
-		{
-			prev = dst[0];
-			dst[0] = src[0];
-			src[0] = src[1];
-		}
-		else
-		{
-			save = dst[index];
-			dst[index] = prev;
-			prev = save;
-			src[index] = src[index + 1];
-		}
-		index++;
+		do_the_swap(stacks->a);
+		do_the_swap(stacks->b);
 	}
-}
-
-void	push_ins(char *instruction, t_stacks *stacks)
-{
-	if (ft_strlen(instruction) > 2)
-		free_and_error(stacks);
-	if (*(instruction + 1) == 'a')
-		do_the_push(stacks->b, stacks->a);
-	else if (*(instruction + 1) == 'b')
-		do_the_swap(stacks->a, stacks->b);
 	else
 		free_and_error(stacks);
 }
 
-int	process_instruction(char *instruction, t_stacks *stacks)
+void	push_ins(char *instruction, t_stacks *stacks, int size)
 {
-	trim_spaces(instruction);
+	if (*(instruction + 1) == 'a')
+		do_the_push(stacks->b, stacks->a, size);
+	else if (*(instruction + 1) == 'b')
+		do_the_push(stacks->a, stacks->b, size);
+	else
+		free_and_error(stacks);
+}
+
+void	revrotate_ins(char *instruction, t_stacks *stacks, int size)
+{
+	if (*(instruction + 2) == '\0')
+	{
+		do_the_rot(stacks->a, size);
+		do_the_rot(stacks->b, size);
+	}
+	else if (*(instruction + 2) == 'a')
+		do_the_revrot(stacks->a, size);
+	else if (*(instruction + 2) == 'b')
+		do_the_revrot(stacks->b, size);
+	else if (*(instruction + 2) == 'r')
+	{
+		do_the_revrot(stacks->a, size);
+		do_the_revrot(stacks->b, size);
+	}
+		else
+			free_and_error(stacks);
+}
+
+void	rotate_ins(char *instruction, t_stacks *stacks, int size)
+{
+	if (*(instruction + 1) == 'a')
+		do_the_rot(stacks->a, size);
+	else if (*(instruction + 1) == 'b')
+		do_the_rot(stacks->b, size);
+	else if (*(instruction + 1) == 'r')
+		revrotate_ins(instruction, stacks, size);
+	else
+		free_and_error(stacks);
+}
+
+int	process_instruction(char *instruction, t_stacks *stacks, int args)
+{
+	char *trimmed_ins;
+
+	trimmed_ins = trim_spaces(instruction);
+	if (ft_strlen(trimmed_ins) > 2)
+		free_and_error(stacks);
 	if (*instruction == 's')
-		swap_ins(instruction, stacks);
+		swap_ins(trimmed_ins, stacks);
 	if (*instruction == 'p')
-		push_ins(instruction, stacks);
+		push_ins(trimmed_ins, stacks, args);
 	if (*instruction == 'r')
-		rotate_ins(instruction, stacks);
+		rotate_ins(trimmed_ins, stacks, args);
 	else
 		free_and_error(stacks);
 	return (1);

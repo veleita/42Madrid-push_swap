@@ -1,35 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bonus.c                                            :+:      :+:    :+:   */
+/*   instructions.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/15 19:25:18 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/15 20:51:47 by mzomeno-         ###   ########.fr       */
+/*   Created: 2021/04/15 20:22:37 by mzomeno-          #+#    #+#             */
+/*   Updated: 2021/04/15 20:23:55 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <common.h>
-#include <stdio.h>
+#ifndef INSTRUCTIONS_H
+# define INSTRUCTIONS_H
 
-void print_stacks(t_stacks *stacks, int argc)
-{
-	int i;
+void	do_the_swap(int *stack);
+void	do_the_push(int *src, int *dst, int size);
+void	do_the_revrot(int *stack, int size);
+void	do_the_rot(int *stack, int size);
 
-	printf("Stack a:");
-	i = 0;
-	while (i < argc)
-	{
-		printf(" %d", stacks->a[i]);
-		i++;
-	}
-	printf("\n");
-	printf("Stack b:");
-	i = 0;
-	while (i < argc)
-	{
-		printf(" %d", stacks->b[i]);
-		i++;
-	}
-}
+#endif

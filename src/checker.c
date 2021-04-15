@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 13:37:30 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/15 19:35:23 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/15 20:54:19 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <common.h>
 #include <args_cooker.h>
 #include <processor.h>
+#include <bonus.h>
 
 /*
 ** Iterate through every node in stack a.
@@ -22,28 +23,37 @@
 ** Else, return true.
 */
 
-bool	is_ordered(t_list *stack)
+bool	is_ordered(int *stack, int size)
 {
-	while (stack)
+	int it;
+
+	it = 0;
+	while (it < size)
 	{
-		if (stack->prev && (stack->prev)->content > stack->content)
+		if (stack[it] > stack[it + 1])
 			return (false);
-		stack = stack->next;
+		it++;
 	}
 	return (true);
 }
 
-bool	is_empty(t_list *stack)
+bool	is_empty(int *stack, int size)
 {
-	if (stack->content == 0 && stack->next == NULL)
-		return (true);
-	else
-		return (false);
+	int it;
+
+	it = 0;
+	while (it < size)
+	{
+		if (stack[it] != 0)
+			return (false);
+		it++;
+	}
+	return (true);
 }
 
-void	checker(t_stacks *stacks)
+void	checker(t_stacks *stacks, int size)
 {
-	if (is_ordered(stacks->a) && is_empty(stacks->b))
+	if (is_ordered(stacks->a, size) && is_empty(stacks->b, size))
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);
@@ -68,17 +78,17 @@ int main(int argc, char **argv)
 	stacks = args_cooker(argc - verbose, argv);
 	if (!stacks)
 		return (-1);
-	while (get_next_line(0, &instruction) >= 0)
+	while (get_next_line(0, &instruction) > 0)
 	{
 		if (verbose)
-			print_stacks(stacks);
-		if (process_instruction(instruction, stacks) == -1)
+			print_stacks(stacks, argc - 1);
+		if (process_instruction(instruction, stacks, argc) == -1)
 		{
 			free(instruction);
 			return (-1);
 		}
 		free(instruction);
 	}
-	checker(stacks);
+	checker(stacks, argc - verbose);
 	return (0);
 }

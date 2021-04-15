@@ -1,35 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bonus.c                                            :+:      :+:    :+:   */
+/*   bonus.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/15 19:25:18 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/15 20:51:47 by mzomeno-         ###   ########.fr       */
+/*   Created: 2021/04/15 20:50:35 by mzomeno-          #+#    #+#             */
+/*   Updated: 2021/04/15 20:51:44 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <common.h>
-#include <stdio.h>
+#ifndef BONUS_H
+# define BONUS_H
 
-void print_stacks(t_stacks *stacks, int argc)
-{
-	int i;
+void print_stacks(t_stacks *stacks, int argc);
 
-	printf("Stack a:");
-	i = 0;
-	while (i < argc)
-	{
-		printf(" %d", stacks->a[i]);
-		i++;
-	}
-	printf("\n");
-	printf("Stack b:");
-	i = 0;
-	while (i < argc)
-	{
-		printf(" %d", stacks->b[i]);
-		i++;
-	}
-}
+#endif

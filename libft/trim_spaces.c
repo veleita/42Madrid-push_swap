@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bonus.c                                            :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/15 19:25:18 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/15 20:51:47 by mzomeno-         ###   ########.fr       */
+/*   Created: 2021/04/15 20:28:30 by mzomeno-          #+#    #+#             */
+/*   Updated: 2021/04/15 20:54:08 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <common.h>
-#include <stdio.h>
+#include "libft.h"
 
-void print_stacks(t_stacks *stacks, int argc)
+char	*trim_spaces(char *str)
 {
-	int i;
+	int it;
+	int len;
+	char *ret;
 
-	printf("Stack a:");
-	i = 0;
-	while (i < argc)
-	{
-		printf(" %d", stacks->a[i]);
-		i++;
-	}
-	printf("\n");
-	printf("Stack b:");
-	i = 0;
-	while (i < argc)
-	{
-		printf(" %d", stacks->b[i]);
-		i++;
-	}
+	it = 0;
+	while (str[it] == ' ')
+		it++;
+	len = 0;
+	while (str[it] != ' ')
+		len++;
+	ret = (char*)malloc(len + 1);
+	ret[len] = '\0';
+	it -= len;
+	len = 0;
+	while (ret[len] != '\0')
+		ret[len++] = str[it++];
+	return (ret);
 }
