@@ -6,7 +6,7 @@
 #    By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/08 18:36:36 by mzomeno-          #+#    #+#              #
-#    Updated: 2021/04/16 11:27:23 by mzomeno-         ###   ########.fr        #
+#    Updated: 2021/04/16 15:40:48 by mzomeno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,13 +45,18 @@ $(CHECKER): $(OBJ_DIR) $(OBJS) $(LIBFT)
 $(OBJ_DIR):
 	mkdir $(OBJ_DIR)
 	mkdir $(OBJ_DIR)/common
+	mkdir $(OBJ_DIR)/checker
+	mkdir $(OBJ_DIR)/args_cooker
+	mkdir $(OBJ_DIR)/processor
+	mkdir $(OBJ_DIR)/instructions
+	mkdir $(OBJ_DIR)/bonus
 	mkdir $(OBJ_DIR)/$(GNL_DIR)
 
 $(LIBFT): $(LIBFT_DIR)
 	$(MAKE) -C $(LIBFT_DIR) re
 
 clean:
-		@rm -rf $(OBJ_DIR)
+		@rm -rf $(OBJ_DIR)/
 		@$(MAKE) -C $(LIBFT_DIR) fclean
 
 fclean:		clean

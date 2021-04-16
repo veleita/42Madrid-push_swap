@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 13:37:30 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/16 13:22:25 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/16 16:25:06 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,21 @@
 ** Else, return true.
 */
 
-bool	is_ordered(int *stack, int size)
+bool	is_empty(long *stack, int size)
+{
+	int it;
+
+	it = 0;
+	while (it < size)
+	{
+		if (stack[it] != VOID)
+			return (false);
+		it++;
+	}
+	return (true);
+}
+
+bool	is_ordered(long *stack, int size)
 {
 	int it;
 
@@ -34,26 +48,15 @@ bool	is_ordered(int *stack, int size)
 			return (false);
 		it++;
 	}
-	return (true);
-}
-
-bool	is_empty(int *stack, int size)
-{
-	int it;
-
-	it = 0;
-	while (it < size)
-	{
-		if (stack[it] != 0)
-			return (false);
-		it++;
-	}
-	return (true);
+	if (is_empty(&(stack[it]), size))
+		return (true);
+	else
+		return (false);
 }
 
 void	checker(t_stacks *stacks)
 {
-	if (is_ordered(stacks->a, stacks->size) && is_empty(stacks->b, stacks->size))
+	if (is_ordered(stacks->a, stacks->size) && is_empty(stacks->b, stacks->size * 2))
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);

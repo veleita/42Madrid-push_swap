@@ -1,36 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   common.h                                           :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/03 14:04:36 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/16 15:23:06 by mzomeno-         ###   ########.fr       */
+/*   Created: 2021/04/16 13:56:59 by mzomeno-          #+#    #+#             */
+/*   Updated: 2021/04/16 14:02:35 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COMMON_H
-# define COMMON_H
+#include "libft.h"
 
-# include <libft.h>
-# include <unistd.h>
-
-# define VOID 2147483648
-
-typedef struct	s_stacks
+void	*ft_memset(void *b, long c, size_t len)
 {
-	long		*a;
-	long		*b;
-	int			size;
-}				t_stacks;
+	char	*p;
 
-/*
-** Error
-*/
-
-void		simple_error(void);
-void		free_stacks(t_stacks *stacks);
-void		free_and_error(t_stacks *stacks);
-
-#endif
+	p = (char*)b;
+	while (len--)
+	{
+		*p = c;
+		p++;
+	}
+	return (b);
+}

@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 13:09:17 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/16 12:43:23 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/16 14:04:37 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void	ft_putnbr(int n);
 ** Initialize
 */
 
+void	*ft_memset(void *b, long c, size_t len);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t count, size_t size);
 

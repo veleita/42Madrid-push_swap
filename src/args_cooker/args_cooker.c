@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 15:33:54 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/16 12:10:10 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/16 16:24:01 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,17 @@ void		check_args(char **argv, int i, t_stacks *stacks)
 t_stacks	*create_stacks(int args)
 {
 	t_stacks	*stacks;
+	int			size;
 
+	size = args * 2 + 1;
 	stacks = (t_stacks*)malloc(sizeof(*stacks));
-	stacks->a = ft_calloc(args, sizeof(int));
-	stacks->b = ft_calloc(args, sizeof(int));
+	stacks->a = (long*)malloc(size * sizeof(long));
+	stacks->b = (long*)malloc(size * sizeof(long));
+	while (size-- >= 0)
+	{
+		stacks->a[size] = VOID;
+		stacks->b[size] = VOID;
+	}
 	stacks->size = args;
 	return (stacks);
 }
