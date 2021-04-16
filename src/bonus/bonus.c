@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 19:25:18 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/16 14:20:07 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/16 16:47:54 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ void print_stacks(t_stacks *stacks)
 	while (i < stacks->size)
 	{
 		ft_putchar(' ');
-		ft_putnbr(stacks->a[i]);
+		if (stacks->a[i] != VOID)
+			ft_putnbr(stacks->a[i]);
 		i++;
 	}
 	ft_putchar('\n');

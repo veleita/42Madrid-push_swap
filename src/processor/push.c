@@ -6,12 +6,25 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 15:52:56 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/16 16:23:43 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/16 16:42:26 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <processor.h>
 #include <common.h>
+
+void	push_to_void(long *src, long *dst, int size)
+{
+	int index;
+	
+	dst[0] = src[0];
+	index = 0;
+	while (index < size)
+	{
+		src[index] = src[index + 1];
+		index++;
+	}
+}
 
 void	do_the_push(long *src, long *dst, int size)
 {
@@ -22,7 +35,7 @@ void	do_the_push(long *src, long *dst, int size)
 	if (src[0] == VOID)
 		return ;
 	else if (dst[0] == VOID)
-		dst[0] = src[0];
+		push_to_void(src, dst, size);
 	else
 	{
 		index = 0;
@@ -42,8 +55,7 @@ void	do_the_push(long *src, long *dst, int size)
 					dst[index] = prev;
 					prev = save;
 				}
-				if (src[index + 1] != VOID)
-					src[index] = src[index + 1];
+				src[index] = src[index + 1];
 			}
 			index++;
 		}
