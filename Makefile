@@ -6,7 +6,7 @@
 #    By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/08 18:36:36 by mzomeno-          #+#    #+#              #
-#    Updated: 2021/04/12 19:02:54 by mzomeno-         ###   ########.fr        #
+#    Updated: 2021/04/16 11:27:23 by mzomeno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,15 +28,15 @@ LIBFT_DIR = libft/
 GNL_DIR = get_next_line
 # SRC_GNL = $(shell find $(GNL_DIR) -name  "*.c" | xargs -I % $(SHELL) -c 'echo % | cut -c 15-')
 
-SRC_DIR = src/
+SRC_DIR = src
 SRC_CHECKER = $(shell find $(SRC_DIR) -name  "*.c" | xargs -I % $(SHELL) -c 'echo % | cut -c 5-')
 
-OBJ_DIR = obj/
-OBJS = $(addprefix $(OBJ_DIR), $(SRC_CHECKER:.c=.o))
+OBJ_DIR = obj
+OBJS = $(addprefix $(OBJ_DIR)/, $(SRC_CHECKER:.c=.o))
 
 all: $(CHECKER)
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 		$(CC) $(CFLAGS) -I $(INCLUDE_DIR) -c $< -o $@
 
 $(CHECKER): $(OBJ_DIR) $(OBJS) $(LIBFT)
@@ -44,8 +44,8 @@ $(CHECKER): $(OBJ_DIR) $(OBJS) $(LIBFT)
 
 $(OBJ_DIR):
 	mkdir $(OBJ_DIR)
-	mkdir $(OBJ_DIR)common
-	mkdir $(OBJ_DIR)$(GNL_DIR)
+	mkdir $(OBJ_DIR)/common
+	mkdir $(OBJ_DIR)/$(GNL_DIR)
 
 $(LIBFT): $(LIBFT_DIR)
 	$(MAKE) -C $(LIBFT_DIR) re
