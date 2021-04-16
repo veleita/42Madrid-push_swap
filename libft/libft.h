@@ -6,13 +6,14 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 13:09:17 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/15 20:40:22 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/16 12:43:23 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# include <unistd.h>
 # include <stdlib.h>
 # include <stdbool.h>
 # include <limits.h>
@@ -60,7 +61,15 @@ char	*ft_strjoin(char const *s1, char const *s2);
 char	*trim_spaces(char *str);
 
 /*
- * Initialize
+** Puts
+*/
+
+void	ft_putchar(char c);
+void	ft_putstr(char *str);
+void	ft_putnbr(int n);
+
+/*
+** Initialize
 */
 
 void	ft_bzero(void *s, size_t n);

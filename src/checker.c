@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 13:37:30 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/15 20:54:19 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/16 13:22:25 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ bool	is_ordered(int *stack, int size)
 	int it;
 
 	it = 0;
-	while (it < size)
+	while (it < size - 1)
 	{
 		if (stack[it] > stack[it + 1])
 			return (false);
@@ -51,9 +51,9 @@ bool	is_empty(int *stack, int size)
 	return (true);
 }
 
-void	checker(t_stacks *stacks, int size)
+void	checker(t_stacks *stacks)
 {
-	if (is_ordered(stacks->a, size) && is_empty(stacks->b, size))
+	if (is_ordered(stacks->a, stacks->size) && is_empty(stacks->b, stacks->size))
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);
@@ -72,23 +72,25 @@ int main(int argc, char **argv)
 	bool		verbose;
 
 	verbose = 0;
-	if (argv[1][0] == '-')
+	if (argc > 1 && argv[1][0] == '-')
 		if (argv[1][1] == 'v' && argv[1][2] == '\0')
 			verbose = 1;
-	stacks = args_cooker(argc - verbose, argv);
+	stacks = args_cooker(argc, verbose, argv);
 	if (!stacks)
 		return (-1);
-	while (get_next_line(0, &instruction) > 0)
+	if (verbose)
+		print_stacks(stacks);
+	while (get_next_line(0, &instruction) >= 0)
 	{
-		if (verbose)
-			print_stacks(stacks, argc - 1);
-		if (process_instruction(instruction, stacks, argc) == -1)
+		if (process_instruction(instruction, stacks) == -1)
 		{
 			free(instruction);
 			return (-1);
 		}
 		free(instruction);
+		if (verbose)
+			print_stacks(stacks);
 	}
-	checker(stacks, argc - verbose);
+	checker(stacks);
 	return (0);
 }

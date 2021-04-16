@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 12:14:21 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/12 17:06:50 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/16 13:26:12 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int			complete_line(int fd, char *buffer, char *file[NUM_FDS])
 		free(file[fd]);
 		file[fd] = tmp;
 	}
-	return (1);
+	return (ft_strchr_index(file[fd], '\n'));
 }
 
 int			save_line(char **line, char *file[NUM_FDS], int fd, int newline)
@@ -89,7 +89,10 @@ int			get_next_line(int fd, char **line)
 	}
 	newline = ft_strchr_index(file[fd], '\n');
 	if (!newline)
-		if (complete_line(fd, buffer, file) == 0)
+	{
+		newline = complete_line(fd, buffer, file);
+		if (!newline)
 			return (empty_file(line));
+	}
 	return (save_line(line, file, fd, newline));
 }

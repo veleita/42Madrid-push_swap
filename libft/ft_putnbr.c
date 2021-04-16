@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   processor.h                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/06 15:53:34 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/16 11:44:18 by mzomeno-         ###   ########.fr       */
+/*   Created: 2021/04/16 12:31:01 by mzomeno-          #+#    #+#             */
+/*   Updated: 2021/04/16 12:41:16 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PROCESSOR_H
-# define PROCESSOR_H
+#include "libft.h"
 
-# include <common.h>
+void	ft_putnbr(int n)
+{
+	unsigned int	nb;
 
-int		process_instruction(char *instruction, t_stacks *stacks);
-void	rotate_ins(char *instruction, t_stacks *stacks);
-void	revrotate_ins(char *instruction, t_stacks *stacks);
-void	push_ins(char *instruction, t_stacks *stacks);
-void	swap_ins(char *instruction, t_stacks *stacks);
-
-#endif
+	if (n < 0)
+	{
+		nb = (unsigned int)(n * -1);
+		ft_putchar('-');
+	}
+	else
+		nb = (unsigned int)n;
+	if (nb >= 10)
+	{
+		ft_putnbr(nb / 10);
+		ft_putnbr(nb % 10);
+	}
+	else
+		ft_putchar(nb + '0');
+}

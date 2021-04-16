@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 15:33:54 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/09 14:09:47 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/16 12:10:10 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,19 +58,19 @@ t_stacks	*create_stacks(int args)
 ** return with an error.
 */
 
-t_stacks *args_cooker(int argc, char **argv)
+t_stacks *args_cooker(int argc, int flags, char **argv)
 {
 	t_stacks	*stacks;
 	int			i;
 
 	if (argc == 1)
 		return (0);
-	stacks = create_stacks(argc - 1);
-	i = 0;
+	stacks = create_stacks(argc - flags - 1);
+	i = flags;
 	while (argv[++i])
 	{
 		check_args(argv, i, stacks);
-		stacks->a[i - 1] = ft_atoi(argv[i]);
+		stacks->a[i - (1 + flags)] = ft_atoi(argv[i]);
 	}
 	return (stacks);
 }

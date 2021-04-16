@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 20:28:30 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/15 20:54:08 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/16 12:19:44 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,14 @@ char	*trim_spaces(char *str)
 	while (str[it] == ' ')
 		it++;
 	len = 0;
-	while (str[it] != ' ')
+	while (str[it] != ' ' && str[it] != '\0')
+	{
 		len++;
+		it++;
+	}
 	ret = (char*)malloc(len + 1);
 	ret[len] = '\0';
-	it -= len;
-	len = 0;
-	while (ret[len] != '\0')
-		ret[len++] = str[it++];
+	while (len-- >= 0)
+		ret[len] = str[--it];
 	return (ret);
 }
