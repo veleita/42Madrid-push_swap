@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 15:57:05 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/16 15:58:39 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/16 18:55:16 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,11 @@
 
 void	do_the_rot(long *stack, int size)
 {
-	int save;
-	int index;
+	int 	save;
+	int		index;
+	int		last;
 
-	index = 0;
+	last = get_last(long *stack);
 	save = stack[0];
 	while (index < size - 1)
 	{
@@ -31,7 +32,7 @@ void	do_the_rot(long *stack, int size)
 void	rotate_ins(char *instruction, t_stacks *stacks)
 {
 	if (*(instruction + 1) == 'a')
-		do_the_rot((long*)stacks->a, stacks->size);
+		do_the_rot(stacks->a, stacks->size);
 	else if (*(instruction + 1) == 'b')
 		do_the_rot(stacks->b, stacks->size);
 	else if (*(instruction + 1) == 'r')
