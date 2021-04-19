@@ -6,14 +6,14 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 15:52:56 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/19 21:39:30 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/19 23:20:47 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <processor.h>
+#include <instructions.h>
 #include <common.h>
 
-void	push_to_void(long *src, long *dst, int size)
+static void	push_to_void(long *src, long *dst, int size)
 {
 	int index;
 	
@@ -26,7 +26,18 @@ void	push_to_void(long *src, long *dst, int size)
 	}
 }
 
-void	do_the_push(long *src, long *dst, int size)
+static void	rotate_stack(long *prev, long *save, int index, long *dst, long*src)
+{
+	if (*prev != VOID)
+	{
+		*save = dst[index];
+		dst[index] = *prev;
+		*prev = *save;
+	}
+	src[index] = src[index + 1];
+}
+
+void		do_the_push(long *src, long *dst, int size)
 {
 	long save;
 	long prev;
@@ -48,26 +59,8 @@ void	do_the_push(long *src, long *dst, int size)
 				src[0] = src[1];
 			}
 			else
-			{
-				if (prev != VOID)
-				{
-					save = dst[index];
-					dst[index] = prev;
-					prev = save;
-				}
-				src[index] = src[index + 1];
-			}
+				rotate_stack(&prev, &save, index, src, dst);
 			index++;
 		}
 	}
-}
-
-void	push_ins(char *instruction, t_stacks *stacks)
-{
-	if (*(instruction + 1) == 'a')
-		do_the_push(stacks->b, (long*)stacks->a, stacks->size);
-	else if (*(instruction + 1) == 'b')
-		do_the_push((long*)stacks->a, stacks->b, stacks->size);
-	else
-		free_and_error(stacks);
 }

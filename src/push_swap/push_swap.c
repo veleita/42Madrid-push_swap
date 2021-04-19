@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   processor.h                                        :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/06 15:53:34 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/19 23:21:38 by mzomeno-         ###   ########.fr       */
+/*   Created: 2021/04/19 23:03:59 by mzomeno-          #+#    #+#             */
+/*   Updated: 2021/04/19 23:31:00 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PROCESSOR_H
-# define PROCESSOR_H
+#include <push_swap.h>
+#include <common.h>
+#include <args_cooker.h>
 
-# include <common.h>
+int	main(int argc, char **argv)
+{
+	t_stacks	*stacks;
 
-int		process_instruction(char *instruction, t_stacks *stacks);
-void	rotate_ins(char *instruction, t_stacks *stacks);
-void	revrotate_ins(char *instruction, t_stacks *stacks);
-void	push_ins(char *instruction, t_stacks *stacks);
-void	swap_ins(char *instruction, t_stacks *stacks);
-
-#endif
+	stacks = args_cooker(argc, 0, argv);
+	if (!stacks)
+		return (-1);
+	return (0);
+}

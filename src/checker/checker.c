@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 13:37:30 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/16 17:44:22 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/19 23:27:27 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 ** Else, return true.
 */
 
-bool	is_empty(long *stack, int size)
+static bool	is_empty(long *stack, int size)
 {
 	int it;
 
@@ -37,7 +37,7 @@ bool	is_empty(long *stack, int size)
 	return (true);
 }
 
-bool	is_ordered(long *stack, int size)
+static bool	is_ordered(long *stack, int size)
 {
 	int it;
 
@@ -54,7 +54,7 @@ bool	is_ordered(long *stack, int size)
 		return (false);
 }
 
-void	checker(t_stacks *stacks)
+void		checker(t_stacks *stacks)
 {
 	if (is_ordered(stacks->a, stacks->size) && is_empty(stacks->b, stacks->size * 2))
 		write(1, "OK\n", 3);

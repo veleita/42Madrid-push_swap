@@ -6,11 +6,11 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 15:58:57 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/19 21:45:40 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/19 23:15:24 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <processor.h>
+#include <instructions.h>
 #include <common.h>
 
 void	do_the_revrot(long *stack)
@@ -28,24 +28,4 @@ void	do_the_revrot(long *stack)
 		index--;
 	}
 	stack[0] = last;
-}
-
-void	revrotate_ins(char *instruction, t_stacks *stacks)
-{
-	if (*(instruction + 2) == '\0')
-	{
-		do_the_rot(stacks->a);
-		do_the_rot(stacks->b);
-	}
-	else if (*(instruction + 2) == 'a' && *(instruction + 3) == '\0')
-		do_the_revrot(stacks->a);
-	else if (*(instruction + 2) == 'b' && *(instruction + 3) == '\0')
-		do_the_revrot(stacks->b);
-	else if (*(instruction + 2) == 'r' && *(instruction + 3) == '\0')
-	{
-		do_the_revrot((long*)stacks->a);
-		do_the_revrot(stacks->b);
-	}
-		else
-			free_and_error(stacks);
 }

@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 15:57:05 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/19 21:54:04 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/19 23:16:00 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,4 @@ void	do_the_rot(long *stack)
 		index++;
 	}
 	stack[last] = save;
-}
-
-void	rotate_ins(char *instruction, t_stacks *stacks)
-{
-	if (*(instruction + 1) == 'a' && *(instruction + 2) == '\0')
-		do_the_rot(stacks->a);
-	else if (*(instruction + 1) == 'b' && *(instruction + 2) == '\0')
-		do_the_rot(stacks->b);
-	else if (*(instruction + 1) == 'r')
-		revrotate_ins(instruction, stacks);
-	else
-		free_and_error(stacks);
 }

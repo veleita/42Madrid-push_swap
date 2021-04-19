@@ -1,3 +1,2 @@
-Fix rr
-Only valid instructions
+Remake Makefile
 Leaks and free

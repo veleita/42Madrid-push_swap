@@ -6,7 +6,7 @@
 #    By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/08 18:36:36 by mzomeno-          #+#    #+#              #
-#    Updated: 2021/04/16 15:40:48 by mzomeno-         ###   ########.fr        #
+#    Updated: 2021/04/19 23:36:09 by mzomeno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ SRC_CHECKER = $(shell find $(SRC_DIR) -name  "*.c" | xargs -I % $(SHELL) -c 'ech
 OBJ_DIR = obj
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRC_CHECKER:.c=.o))
 
-all: $(CHECKER)
+all: $(PUSH_SWAP)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 		$(CC) $(CFLAGS) -I $(INCLUDE_DIR) -c $< -o $@
@@ -42,12 +42,15 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 $(CHECKER): $(OBJ_DIR) $(OBJS) $(LIBFT)
 	$(CC) $(OBJS) $(LIBFT_DIR)$(LIBFT) $(CFLAGS) -o $(CHECKER)
 
+$(PUSH_SWAP): $(OBJ_DIR) $(OBJS) $(LIBFT)
+	$(CC) $(OBJS) $(LIBFT_DIR)$(LIBFT) $(CFLAGS) -o $(PUSH_SWAP)
+
 $(OBJ_DIR):
 	mkdir $(OBJ_DIR)
 	mkdir $(OBJ_DIR)/common
-	mkdir $(OBJ_DIR)/checker
+	mkdir $(OBJ_DIR)/push_swap
+#	mkdir $(OBJ_DIR)/checker
 	mkdir $(OBJ_DIR)/args_cooker
-	mkdir $(OBJ_DIR)/processor
 	mkdir $(OBJ_DIR)/instructions
 	mkdir $(OBJ_DIR)/bonus
 	mkdir $(OBJ_DIR)/$(GNL_DIR)
