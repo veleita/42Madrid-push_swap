@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 15:31:10 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/16 16:08:13 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/19 16:17:41 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	process_instruction(char *instruction, t_stacks *stacks)
 	char *trimmed_ins;
 
 	trimmed_ins = trim_spaces(instruction);
-	if (ft_strlen(trimmed_ins) > 2)
+	if (ft_strlen(trimmed_ins) > 3)
 		free_and_error(stacks);
 	if (*instruction == 's')
 		swap_ins(trimmed_ins, stacks);

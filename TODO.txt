@@ -1,0 +1,3 @@
+Fix push
+Only valid instructions
+Leaks and free

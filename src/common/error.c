@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 12:02:25 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/09 13:45:26 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/19 20:30:48 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ void		simple_error(void)
 
 void		free_stacks(t_stacks *stacks)
 {
-	if (stacks->a)
-		free(stacks->a);
-	if (stacks->b)
-		free(stacks->b);
+//	if (stacks->a)
+//		free(stacks->a);
+//	if (stacks->b)
+//		free(stacks->b);
 	free(stacks);
 }
 

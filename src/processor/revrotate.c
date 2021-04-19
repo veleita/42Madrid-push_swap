@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 15:58:57 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/19 13:15:27 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/19 21:29:55 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,14 @@ void	do_the_revrot(long *stack)
 
 	if (*stack == VOID)
 		return ;
-	last = get_last(stack);
-	stack[0] = last;
-	index = 0;
-	while (stack[index++] != last)
+	index = get_last(stack);
+	last = stack[index];
+	while (index)
+	{
 		stack[index] = stack[index - 1];
+		index--;
+	}
+	stack[0] = last;
 }
 
 void	revrotate_ins(char *instruction, t_stacks *stacks)
