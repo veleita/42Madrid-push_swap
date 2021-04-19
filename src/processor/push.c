@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 15:52:56 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/16 16:42:26 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/19 21:39:30 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	do_the_push(long *src, long *dst, int size)
 	else
 	{
 		index = 0;
-		while (index < size - 1)
+		while (index < size)
 		{
 			if (index == 0)
 			{
