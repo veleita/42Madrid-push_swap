@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 15:58:57 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/19 21:29:55 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/19 21:45:40 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,14 @@ void	revrotate_ins(char *instruction, t_stacks *stacks)
 {
 	if (*(instruction + 2) == '\0')
 	{
-		do_the_rot((long*)stacks->a);
+		do_the_rot(stacks->a);
 		do_the_rot(stacks->b);
 	}
-	else if (*(instruction + 2) == 'a')
-		do_the_revrot((long*)stacks->a);
-	else if (*(instruction + 2) == 'b')
+	else if (*(instruction + 2) == 'a' && *(instruction + 3) == '\0')
+		do_the_revrot(stacks->a);
+	else if (*(instruction + 2) == 'b' && *(instruction + 3) == '\0')
 		do_the_revrot(stacks->b);
-	else if (*(instruction + 2) == 'r')
+	else if (*(instruction + 2) == 'r' && *(instruction + 3) == '\0')
 	{
 		do_the_revrot((long*)stacks->a);
 		do_the_revrot(stacks->b);
