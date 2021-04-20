@@ -6,12 +6,9 @@
 #    By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/08 18:36:36 by mzomeno-          #+#    #+#              #
-#    Updated: 2021/04/19 23:36:09 by mzomeno-         ###   ########.fr        #
+#    Updated: 2021/04/20 16:51:01 by mzomeno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
-PUSH_SWAP	= push_swap
-CHECKER = checker
 
 TEST	= test
 
@@ -22,38 +19,60 @@ CFLAGS += -g -Wall -Wextra -Werror
 INCLUDE_DIR = include/
 HEADERS = $(shell find $(INCLUDE_DIR) -name "*.h")
 
+
+SRC_DIR = src
+OBJ_DIR = obj
+
+
 LIBFT = libft.a
 LIBFT_DIR = libft/
 
-GNL_DIR = get_next_line
-# SRC_GNL = $(shell find $(GNL_DIR) -name  "*.c" | xargs -I % $(SHELL) -c 'echo % | cut -c 15-')
 
-SRC_DIR = src
-SRC_CHECKER = $(shell find $(SRC_DIR) -name  "*.c" | xargs -I % $(SHELL) -c 'echo % | cut -c 5-')
+CHECKER = checker
+CHECKER_DEPENDENCIES = 	$(SRC_DIR)/checker \
+						$(SRC_DIR)/args_cooker \
+						$(SRC_DIR)/common \
+						$(SRC_DIR)/get_next_line \
+						$(SRC_DIR)/instructions \
+						$(SRC_DIR)/bonus
 
-OBJ_DIR = obj
-OBJS = $(addprefix $(OBJ_DIR)/, $(SRC_CHECKER:.c=.o))
+SRC_CHECKER = $(shell find $(CHECKER_DEPENDENCIES) -name  "*.c" | xargs -I % $(SHELL) -c 'echo % | cut -c 5-')
 
-all: $(PUSH_SWAP)
+OBJS_CHECKER = $(addprefix $(OBJ_DIR)/, $(SRC_CHECKER:.c=.o))
+
+
+PUSH_SWAP	= push_swap
+PUSH_SWAP_DEPENDENCIES = 	$(SRC_DIR)/push_swap \
+							$(SRC_DIR)/common \
+							$(SRC_DIR)/args_cooker \
+							$(SRC_DIR)/instructions \
+							$(SRC_DIR)/bonus
+
+SRC_PUSH_SWAP = $(shell find $(PUSH_SWAP_DEPENDENCIES) -name  "*.c" | xargs -I % $(SHELL) -c 'echo % | cut -c 5-')
+
+OBJS_PUSH_SWAP = $(addprefix $(OBJ_DIR)/, $(SRC_PUSH_SWAP:.c=.o))
+
+
+all: $(PUSH_SWAP) $(CHECKER)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 		$(CC) $(CFLAGS) -I $(INCLUDE_DIR) -c $< -o $@
 
-$(CHECKER): $(OBJ_DIR) $(OBJS) $(LIBFT)
-	$(CC) $(OBJS) $(LIBFT_DIR)$(LIBFT) $(CFLAGS) -o $(CHECKER)
+$(CHECKER): $(OBJ_DIR) $(OBJS_CHECKER) $(LIBFT)
+	$(CC) $(OBJS_CHECKER) $(LIBFT_DIR)$(LIBFT) $(CFLAGS) -o $(CHECKER)
 
-$(PUSH_SWAP): $(OBJ_DIR) $(OBJS) $(LIBFT)
-	$(CC) $(OBJS) $(LIBFT_DIR)$(LIBFT) $(CFLAGS) -o $(PUSH_SWAP)
+$(PUSH_SWAP): $(OBJ_DIR) $(OBJS_PUSH_SWAP) $(LIBFT)
+	$(CC) $(OBJS_PUSH_SWAP) $(LIBFT_DIR)$(LIBFT) $(CFLAGS) -o $(PUSH_SWAP)
 
 $(OBJ_DIR):
 	mkdir $(OBJ_DIR)
 	mkdir $(OBJ_DIR)/common
 	mkdir $(OBJ_DIR)/push_swap
-#	mkdir $(OBJ_DIR)/checker
+	mkdir $(OBJ_DIR)/checker
 	mkdir $(OBJ_DIR)/args_cooker
 	mkdir $(OBJ_DIR)/instructions
 	mkdir $(OBJ_DIR)/bonus
-	mkdir $(OBJ_DIR)/$(GNL_DIR)
+	mkdir $(OBJ_DIR)/get_next_line
 
 $(LIBFT): $(LIBFT_DIR)
 	$(MAKE) -C $(LIBFT_DIR) re

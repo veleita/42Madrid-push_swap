@@ -1,2 +1,3 @@
-Remake Makefile
+Fix push
+Fix rotate
 Leaks and free

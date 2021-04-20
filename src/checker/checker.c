@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 13:37:30 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/19 23:27:27 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/20 16:53:45 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int main(int argc, char **argv)
 	while (get_next_line(0, &instruction) >= 0)
 	{
 		if (ft_strcmp(instruction, "END") == 0)
-			return (0);
+			break ;
 		if (process_instruction(instruction, stacks) == -1)
 		{
 			free(instruction);
