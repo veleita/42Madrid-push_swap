@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 13:37:30 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/20 16:53:45 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/21 12:02:37 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 ** Else, return true.
 */
 
-static bool	is_empty(long *stack, int size)
+bool	is_empty(long *stack, int size)
 {
 	int it;
 

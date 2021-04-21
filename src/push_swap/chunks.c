@@ -6,9 +6,11 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 21:09:16 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/21 00:34:39 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/21 20:43:18 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <checker.h>
 
 int		get_chunk_size(long *stack, int stack_size)
 {
@@ -25,32 +27,46 @@ int		get_chunk_size(long *stack, int stack_size)
 	return (chunk_size);
 }
 
+static bool push_to_b(t_stacks *stacks, long num, int *pushes)
+{
+	if (stacks->a[0] == num)
+	{
+		do_the_push(stacks->a, stacks->b);
+		*pushes++;
+		ft_putstr("pb\n");
+		return (true);
+	}
+	else
+		return (false);
+}
+
 static void	search_and_push(int chunk_size, int stack_size, t_stacks *stacks)
 {
 	int		top_index;
 	int		bottom_index;
 	int		stack_index;
+	int		pushes;
+	bool	pushed;
 	
 	bottom_index = 0;
 	top_index = chunk_size;
 	while (top_index < stack_size)
-	{	
-		while (bottom_index < top_index)
+	{
+		pushed = false;
+		bottom_index = top_index - chunk_size;
+		index = bottom_index;
+		while (index < top_index && pushed == false)
 		{
-			stack_index = 0;
-			while (stack_index < stack_size)
-			{
-				if (stack[bottom_index] == ordered_stack[stack_index])
-				{
-					do_the_push();
-					ft_putstr("pb\n");
-					break ;
-				}
-				stack_index++;
-			}
-			bottom_index++;
+			pushed = push_to_b(stacks, ordered_stack[index], &pushes);
+			index++;
 		}
-		top_index += chunk_size;
+		if (pushed == false)
+			do_the_rot(stacks->a);
+		if (pushes == stack_size)
+		{
+			top_index += chunk_size;
+			pushes = 0;
+		}
 	}
 }
 
