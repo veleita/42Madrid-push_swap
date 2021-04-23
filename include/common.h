@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:04:36 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/16 18:56:32 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/23 10:59:31 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,6 @@ void		free_and_error(t_stacks *stacks);
 */
 
 int get_last(long *stack);
+int	get_stack_size(long *stack);
+
 #endif

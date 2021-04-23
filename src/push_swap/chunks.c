@@ -6,13 +6,15 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 21:09:16 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/21 20:43:18 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/23 11:22:45 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <chunks.h>
 #include <checker.h>
+#include <instructions.h>
 
-int		get_chunk_size(long *stack, int stack_size)
+static int	get_chunk_size(int stack_size)
 {
 	int chunk_size;
 	int n_chunks;
@@ -27,12 +29,11 @@ int		get_chunk_size(long *stack, int stack_size)
 	return (chunk_size);
 }
 
-static bool push_to_b(t_stacks *stacks, long num, int *pushes)
+static bool push_to_b(t_stacks *stacks, long num)
 {
 	if (stacks->a[0] == num)
 	{
-		do_the_push(stacks->a, stacks->b);
-		*pushes++;
+		do_the_push(stacks->a, stacks->b, stacks->size);
 		ft_putstr("pb\n");
 		return (true);
 	}
@@ -40,32 +41,30 @@ static bool push_to_b(t_stacks *stacks, long num, int *pushes)
 		return (false);
 }
 
-static void	search_and_push(int chunk_size, int stack_size, t_stacks *stacks)
+static void	search_and_push(int chunk_size, int stack_size, t_stacks *stacks,
+								long *ordered_stack)
 {
 	int		top_index;
 	int		bottom_index;
-	int		stack_index;
-	int		pushes;
-	bool	pushed;
+	int		index;
+	int		push;
 	
 	bottom_index = 0;
 	top_index = chunk_size;
+	push = 0;
 	while (top_index < stack_size)
 	{
-		pushed = false;
-		bottom_index = top_index - chunk_size;
 		index = bottom_index;
-		while (index < top_index && pushed == false)
-		{
-			pushed = push_to_b(stacks, ordered_stack[index], &pushes);
+		while (index < top_index &&
+				push_to_b(stacks, ordered_stack[index]) == false)
 			index++;
-		}
-		if (pushed == false)
+		if (index == top_index)
 			do_the_rot(stacks->a);
-		if (pushes == stack_size)
+		else if (++push == stack_size)
 		{
 			top_index += chunk_size;
-			pushes = 0;
+			bottom_index += chunk_size;
+			push = 0;
 		}
 	}
 }
@@ -77,7 +76,7 @@ void	divide_chunks(t_stacks *stacks)
 	long	*ordered_stack;
 
 	stack_size = get_stack_size(stacks->a);
-	chunk_size = get_chunk_size(stacks->a, stack_size);
-	ordered_stack = order_stack(stacks->a);
-	search_and_push(chunk_size, stack_size, stacks)
+	chunk_size = get_chunk_size(stack_size);
+	ordered_stack = order_stack(stacks->a, stack_size);
+	search_and_push(chunk_size, stack_size, stacks, ordered_stack);
 }

@@ -1,35 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stacks.c                                           :+:      :+:    :+:   */
+/*   chunks.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/16 18:50:58 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/23 10:59:11 by mzomeno-         ###   ########.fr       */
+/*   Created: 2021/04/23 10:53:26 by mzomeno-          #+#    #+#             */
+/*   Updated: 2021/04/23 11:22:18 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef CHUNKS_H
+# define CHUNKS_H
+
 #include <common.h>
 
-int get_last(long *stack)
-{
-	long	last;
-	int		index;
-	
-	index = 0;
-	while (stack[index] != VOID)
-		index++;
-	last = index - 1;
-	return (last);
-}
+void	divide_chunks(t_stacks *stacks);
+long	*order_stack(long *stack, int stack_size);
 
-int	get_stack_size(long *stack)
-{
-	int size;
-
-	size = 0;
-	while (stack[size] != VOID)
-		size++;
-	return (size);
-}
+#endif
