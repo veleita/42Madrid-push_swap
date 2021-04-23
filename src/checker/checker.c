@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 13:37:30 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/21 12:02:37 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/23 14:16:54 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static bool	is_ordered(long *stack, int size)
 			return (false);
 		it++;
 	}
-	if (is_empty(&(stack[it]), size))
+	if (is_empty(&(stack[it + 1]), size))
 		return (true);
 	else
 		return (false);
@@ -85,8 +85,10 @@ int main(int argc, char **argv)
 		print_stacks(stacks);
 	while (get_next_line(0, &instruction) >= 0)
 	{
+		ft_putchar('\n');
 		if (ft_strcmp(instruction, "END") == 0)
 			break ;
+		ft_putstr(instruction);
 		if (process_instruction(instruction, stacks) == -1)
 		{
 			free(instruction);

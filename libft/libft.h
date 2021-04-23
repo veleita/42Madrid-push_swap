@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 13:09:17 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/16 14:04:37 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/23 13:59:10 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ bool	ft_str_isdigit(char *str);
 ** Len
 */
 
+int		ft_intlen(int i);
 size_t	ft_strlen(const char *str);
 
 /*
@@ -50,6 +51,7 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 ** Data type transformation
 */
 
+char	*ft_itoa(int i);
 int		ft_atoi(const char *str);
 long	ft_atol(const char *str);
 

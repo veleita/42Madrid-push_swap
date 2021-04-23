@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/19 23:03:59 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/23 12:49:36 by mzomeno-         ###   ########.fr       */
+/*   Created: 2021/04/23 13:24:13 by mzomeno-          #+#    #+#             */
+/*   Updated: 2021/04/23 14:33:15 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <push_swap.h>
-#include <chunks.h>
-#include <args_cooker.h>
+#include <libft.h>
 
-void	push_swap(t_stacks *stacks)
+char *ft_itoa(int i)
 {
-	divide_chunks(stacks);
-	ft_putstr("END\n");
-	return ;
-}
+	char 	*a;
+	int		it;
 
-int		main(int argc, char **argv)
-{
-	t_stacks	*stacks;
-
-	stacks = args_cooker(argc, 0, argv);
-	if (!stacks)
-		return (-1);
-	push_swap(stacks);
-	return (0);
+	it = 0;
+	a = (char*)malloc(ft_intlen(i) * sizeof(char) + 1);
+	while (i > 9)
+	{
+		a[it++] = '0' + 1 % 10;
+		i /= 10;
+	}
+	a[it++] = '0' + i;
+	a[it] = '\0';
+	return (a);
 }

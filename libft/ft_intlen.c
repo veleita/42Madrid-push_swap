@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_intlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/19 23:03:59 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/23 12:49:36 by mzomeno-         ###   ########.fr       */
+/*   Created: 2021/04/23 13:42:57 by mzomeno-          #+#    #+#             */
+/*   Updated: 2021/04/23 13:58:31 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <push_swap.h>
-#include <chunks.h>
-#include <args_cooker.h>
+#include <libft.h>
 
-void	push_swap(t_stacks *stacks)
+int		ft_intlen(int i)
 {
-	divide_chunks(stacks);
-	ft_putstr("END\n");
-	return ;
-}
+	int len;
 
-int		main(int argc, char **argv)
-{
-	t_stacks	*stacks;
-
-	stacks = args_cooker(argc, 0, argv);
-	if (!stacks)
-		return (-1);
-	push_swap(stacks);
-	return (0);
+	len = 1;
+	if (i == INT_MIN)
+		i++;
+	if (i < 0)
+		i *= -1;
+	while (i > 10)
+	{
+		len++;
+		i /= 10;
+	}
+	return (len);
 }

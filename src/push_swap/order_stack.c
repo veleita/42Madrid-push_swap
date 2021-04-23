@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 10:29:47 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/23 11:22:32 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/23 13:12:47 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,11 @@ long	*order_stack(long *stack, int stack_size)
 	while (++ordered_stack_it < stack_size)
 	{
 		stack_it = -1;
+		next = INT_MAX;
 		while (stack[++stack_it] != VOID)
 		{
-			if (stack[stack_it] < next)
-				if (check_dups(ordered_stack, ordered_stack_it, stack[stack_it]) == false)
+			if (stack[stack_it] < next &&
+					check_dups(ordered_stack, ordered_stack_it, stack[stack_it]) == false)
 					next = stack[stack_it];
 		}
 		ordered_stack[ordered_stack_it] = next;

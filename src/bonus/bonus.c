@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 19:25:18 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/19 15:58:03 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/23 12:47:16 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ void print_stacks(t_stacks *stacks)
 		ft_putchar(' ');
 		if (stacks->a[i] != VOID)
 			ft_putnbr(stacks->a[i]);
-		else
-			ft_putstr("VOID");
 		i++;
 	}
 	ft_putchar('\n');
@@ -35,9 +33,7 @@ void print_stacks(t_stacks *stacks)
 		ft_putchar(' ');
 		if (stacks->b[i] != VOID)
 			ft_putnbr(stacks->b[i]);
-		else
-			ft_putstr("VOID");
 		i++;
 	}
-	ft_putchar('\n');
+	ft_putstr("\n------------------\n");
 }
