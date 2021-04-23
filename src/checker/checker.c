@@ -6,14 +6,13 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 13:37:30 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/23 14:16:54 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/23 17:21:00 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <checker.h>
 #include <common.h>
 #include <args_cooker.h>
-#include <processor.h>
 #include <bonus.h>
 
 /*
@@ -22,37 +21,6 @@
 ** previous node (when it exists), return false.
 ** Else, return true.
 */
-
-bool	is_empty(long *stack, int size)
-{
-	int it;
-
-	it = 0;
-	while (it < size)
-	{
-		if (stack[it] != VOID)
-			return (false);
-		it++;
-	}
-	return (true);
-}
-
-static bool	is_ordered(long *stack, int size)
-{
-	int it;
-
-	it = 0;
-	while (it < size - 1)
-	{
-		if (stack[it] > stack[it + 1])
-			return (false);
-		it++;
-	}
-	if (is_empty(&(stack[it + 1]), size))
-		return (true);
-	else
-		return (false);
-}
 
 void		checker(t_stacks *stacks)
 {
@@ -85,10 +53,10 @@ int main(int argc, char **argv)
 		print_stacks(stacks);
 	while (get_next_line(0, &instruction) >= 0)
 	{
-		ft_putchar('\n');
 		if (ft_strcmp(instruction, "END") == 0)
 			break ;
 		ft_putstr(instruction);
+		ft_putchar('\n');
 		if (process_instruction(instruction, stacks) == -1)
 		{
 			free(instruction);

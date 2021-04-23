@@ -6,11 +6,39 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 18:50:58 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/23 10:59:11 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/23 17:18:30 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <common.h>
+
+bool	is_ordered(long *stack, int size)
+{
+	int it;
+
+	it = 0;
+	while (it < size - 1)
+	{
+		if (stack[it] > stack[it + 1])
+			return (false);
+		it++;
+	}
+	return (true);
+}
+
+bool	is_empty(long *stack, int size)
+{
+	int it;
+
+	it = 0;
+	while (it < size)
+	{
+		if (stack[it] != VOID)
+			return (false);
+		it++;
+	}
+	return (true);
+}
 
 int get_last(long *stack)
 {

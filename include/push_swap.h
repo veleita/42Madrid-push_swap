@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 23:25:42 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/19 23:26:45 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/23 16:51:02 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,17 @@
 
 # include <common.h>
 
-void	checker(t_stacks *stacks);
+/*
+** Chunks
+*/
+
+void	divide_chunks(t_stacks *stacks);
+long	*order_stack(long *stack, int stack_size);
+
+/*
+** Algorithm
+*/
+
+char	set_priority(t_stacks *stacks);
 
 #endif

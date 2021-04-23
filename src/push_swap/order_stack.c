@@ -6,11 +6,11 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 10:29:47 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/23 15:10:26 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/23 17:04:22 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <chunks.h>
+#include <push_swap.h>
 
 static bool	check_dups(long *ordered_stack, int aux_it, int num)
 {

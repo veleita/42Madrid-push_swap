@@ -6,11 +6,10 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 15:57:05 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/19 23:16:00 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/23 17:06:20 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <processor.h>
 #include <common.h>
 
 void	do_the_rot(long *stack)
