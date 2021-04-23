@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 21:09:16 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/23 14:06:39 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/23 15:17:02 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ static bool push_to_b(t_stacks *stacks, long num)
 	{
 		do_the_push(stacks->a, stacks->b, stacks->size);
 		ft_putstr("pb\n");
-		ft_putstr(ft_itoa(num));
+/*		ft_putstr(ft_itoa(num));
 		ft_putchar('\n');
-		return (true);
+*/		return (true);
 	}
 	else
 		return (false);
@@ -54,14 +54,14 @@ static void	search_and_push(int chunk_size, int stack_size, t_stacks *stacks,
 	bottom_index = 0;
 	top_index = chunk_size;
 	push = 0;
-	ft_putstr("Bottom: ");
+/*	ft_putstr("Bottom: ");
 	ft_putstr(ft_itoa(bottom_index));
 	ft_putchar('\n');
 	ft_putstr("Top: ");
 	ft_putstr(ft_itoa(top_index));
 	ft_putchar('\n');
 	ft_putstr("-------------------\n");
-	while (top_index < stack_size)
+*/	while (top_index < stack_size)
 	{
 		index = bottom_index;
 		while (index < top_index &&
@@ -77,14 +77,14 @@ static void	search_and_push(int chunk_size, int stack_size, t_stacks *stacks,
 			top_index += chunk_size;
 			bottom_index += chunk_size;
 			push = 0;
-			ft_putstr("Bottom: ");
+/*			ft_putstr("Bottom: ");
 			ft_putstr(ft_itoa(bottom_index));
 			ft_putchar('\n');
 			ft_putstr("Top: ");
 			ft_putstr(ft_itoa(top_index));
 			ft_putchar('\n');
 			ft_putstr("-------------------\n");
-		}
+	*/	}
 	}
 }
 

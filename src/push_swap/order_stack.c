@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 10:29:47 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/23 13:12:47 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/23 15:10:26 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,9 @@ long	*order_stack(long *stack, int stack_size)
 	int		next;
 
 	ordered_stack = (long*)malloc(sizeof(long) * stack_size);
+	ordered_stack_it = -1;
+	while (ordered_stack_it++ < stack_size)
+		ordered_stack[ordered_stack_it] = VOID;
 	next = stack[0];
 	ordered_stack_it = -1;
 	while (++ordered_stack_it < stack_size)
