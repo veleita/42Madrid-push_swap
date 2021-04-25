@@ -18,8 +18,8 @@
 void		push_swap(t_stacks *stacks)
 {
 	char 	priority;
-	int		chunk_size;
-	int	 it = 10;
+	int	chunk_size;
+	int	 it = 2;
 
 	chunk_size = divide_chunks(stacks);
 	while ((is_ordered(stacks->a, stacks->size) == false ||
@@ -29,6 +29,7 @@ void		push_swap(t_stacks *stacks)
 		ask_push(stacks, priority);
 		ask_swap(stacks, priority);
 		ask_rev_rotate(stacks, priority, chunk_size);
+		ask_swap(stacks, priority);
 		ask_rotate(stacks, priority);
 		it--;
 	}

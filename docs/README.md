@@ -100,6 +100,6 @@ b -> | B | // | b | // |
 
 ### To do
 
-- Optimize chunks algorithm.
+- Optimize chunks algorithm. DONE - NOT TESTED
 - Search two bigger/smaller unsequenced pair of numbers.
 - Implement priority system.

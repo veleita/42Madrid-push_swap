@@ -14,31 +14,43 @@
 #include <checker.h>
 #include <instructions.h>
 
-static int	get_chunk_size(int stack_size)
+static bool	found(int bottom_index, int top_index, long *ordered_stack, int num)
 {
-	int chunk_size;
-	int n_chunks;
-
-	n_chunks = 1;
-	chunk_size = stack_size / n_chunks;
-	while (chunk_size > (n_chunks * 10))
+	while (bottom_index < top_index)
 	{
-		n_chunks++;
-		chunk_size = stack_size / n_chunks;
+		if (num == ordered_stack[bottom_index])
+			return (true);
+		bottom_index++;
 	}
-	return (chunk_size);
+	return (false);
 }
 
-static bool push_to_b(t_stacks *stacks, long num)
+static void	rotate_to_win(int distance, char *instruction, void *(rotate)(long*), long *stack)
 {
-	if (stacks->a[0] == num)
+	while (distance-- >= 0)
 	{
-		do_the_push(stacks->a, stacks->b, stacks->size);
-		ft_putstr("pb\n");
-		return (true);
+		rotate(stack);
+		ft_putstr(instruction);
 	}
+}
+
+static void	find_in_chunk(long *ordered_stack, int bottom_index, int top_index, long *stack)
+{
+	int dist_from_head;
+	int dist_from_tail;
+	int last;
+
+	dist_from_head = 0;
+	dist_from_tail = 0;
+	last = get_last(stack);
+	while (found(ordered_stack, bottom_index, top_index, stack[dist_from_head]) == false)
+		dist_from_head++;
+	while (found(ordered_stack, bottom_index, top_index, stack[last - dist_from_tail]) == false)
+		dist_from_tail++;
+	if (dist_from_head < dist_from_tail)
+		rotate_to_win(dist_from_head, "ra\n", do_the_rot, stack);
 	else
-		return (false);
+		rotate_to_win(dist_from_head, "rra\n", do_the_revrot, stack);
 }
 
 static void	search_and_push(int chunk_size, int stack_size, t_stacks *stacks,
@@ -51,34 +63,36 @@ static void	search_and_push(int chunk_size, int stack_size, t_stacks *stacks,
 	
 	bottom_index = 0;
 	top_index = chunk_size;
-	push = 0;
-	while (top_index < stack_size)
+	while (top_index < stack_size / 2)
 	{
-		index = bottom_index;
-		while (index < top_index &&
-				push_to_b(stacks, ordered_stack[index]) == false)
-			index++;
-		if (index == top_index)
+		push = 0;
+		while (push <= chunk_size)
 		{
-			do_the_rot(stacks->a);
-			ft_putstr("ra\n");
+			find_in_chunk(ordered_stack, bottom_index, top_index, stacks->a);
+			do_the_push(stacks->a, stacks->b, stacks->size);
+			ft_putstr("pb\n");
+			push++;
 		}
-		else if (++push == chunk_size)
-		{
-			top_index += chunk_size;
-			bottom_index += chunk_size;
-			push = 0;
-		}
+		top_index += chunk_size;
+		bottom_index += chunk_size;
 	}
 }
+
 int			divide_chunks(t_stacks *stacks)
 {
-	int		stack_size;
-	int		chunk_size;
+	int	stack_size;
+	int	chunk_size;
+	int	n_chunks;
 	long	*ordered_stack;
 
 	stack_size = get_stack_size(stacks->a);
-	chunk_size = get_chunk_size(stack_size);
+	n_chunks = 1;
+	chunk_size = stack_size / n_chunks;
+	while (chunk_size > (n_chunks * 10))
+	{
+		n_chunks++;
+		chunk_size = stack_size / n_chunks;
+	}
 	ordered_stack = order_stack(stacks->a, stack_size);
 	search_and_push(chunk_size, stack_size, stacks, ordered_stack);
 	return (chunk_size);
