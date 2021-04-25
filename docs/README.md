@@ -60,59 +60,46 @@ After reading and performing the instructions, if the stack a is ordered and b i
 Works with two stacks, a and b. a must be filled with integers passed as arguments. b must be empty.
 It must generate a series of instructions so the numbers in stack a, leaving the stack b empty.
 
-#### **Push swap algorithm**
+#### **Push swap new algorithm**
 
 1. Order the numbers of stack a in an array.
 2. Divide the array in chunks from index n to n + x.
-3. In stack b, group together the numbers from stack a that belong to the same chunk. Stack a is left empty.
-4. In stack a, order the numbers from stack b.
+3. Group together the numbers from stack a that belong to the same chunk.
+   The smallest half of the chunks remain in stack b, and the biggest half in stack a.
+4. Order the numbers in stack a from smallest to biggest a, and from biggest to smallest in stack b.
 
 The algoritm to sort the stack will follow these rules:
 
-a -> | A | B | C | // | Z |
+a -> | a | // | A | // |
 
-b -> | A | B | C | // | Z |
+b -> | B | // | b | // |
+
+(B < a)
 
 **PUSH**
-- A(b) will only push to a when A(b) > B(b).
-- If priority is in stack b (see PRIORITY), A(b) will only push to a when A(b) < A(a).
+- Once the chunks are divided, b will only push to a when both stacks are ordered.
 
+**STACK A**
+1. Identify the two biggest unsequenced numbers and put them together.
+   The bigger one in this pair be *A*, the smaller be *a*.
+2. **ra** or **rra** until *a* is in the head of the stack.
+3. **ra sa** or **rra sa** until *a* is located right before *A*.
 
-**SWAP**
+**STACK B**
+1. Identify the two smallest unsequenced numbers and put them together.
+   The smaller one in this pair be *b*, the bigger be *B*.
+2. **rb** or **rrb** until *B* is in the head of the stack.
+3. **rb sb** or **rrb sb** until *B* is located right before *b*.
 
-In stack b, A will swap with B if A < B && A > C .  
-EX: b | 3 | 5 | 1 | //	->  | 5 | 3 | 1 | //
-
-In stack a, A will swap with B if A > B .                     
-EX: a | 5 | 3 | //	->  | 3 | 5 | //
-	
-	
-**ROTATE**
-
-In stack b, A will rotate if A < B && A < C .                 
-EX: b | 1 | 5 | 3 | //	->  | 5 | 3 | // | 1
-
-In stack a, A will rotate if B + n > C + n .                  
-EX: a | 3 | 5 | 1 | //	->  | 5 | 1 | // | 3
-
-
-**REVERSE ROTATE**
-
-In stack b, Z will reverse rotate if Z > A && Z in chunk(A)   
-EX: b | 3 | 1 | // | 5	->  | 5 | 3 | 1 | //
-
-In stack a, Z will reverse rotate if Z > A && Z < B           
-EX: a | 1 | 5 | // | 3	->  | 3 | 1 | 5 | //
-
-
-**PRIORITY**
-- After every push, we will check which stack is more untidy, this one will get the PRIORITY flag.
-- The other stack will only perform swap, rotate or reverse rotate instructions if the priority stack needs to,
-  executing for this a double instruction (ss, rr, rrr).
-
+**BOTH**
+1. After each of the loops described above, calculate which stack is more untidy.
+2. The tidier stack will only perform double instructions (ss, rr, rrr).
+   Therefore, it will wait for the other stack to perform the same instruction.
 
 ---
 
 ### To do
 
-- Determine what must be the proportion between the size of the chunk and the number of numbers to sort.
+- Optimize chunks algorithm.
+- Search two bigger/smaller unsequenced pair of numbers.
+- Implement priority system.

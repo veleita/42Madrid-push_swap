@@ -1,3 +1,0 @@
-Fick checker (KO/OK)
-Fix rotate
-Leaks and free
