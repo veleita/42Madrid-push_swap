@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 21:09:16 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/23 17:04:41 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/23 18:23:08 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,7 @@ static void	search_and_push(int chunk_size, int stack_size, t_stacks *stacks,
 		}
 	}
 }
-
-void	divide_chunks(t_stacks *stacks)
+int			divide_chunks(t_stacks *stacks)
 {
 	int		stack_size;
 	int		chunk_size;
@@ -82,4 +81,5 @@ void	divide_chunks(t_stacks *stacks)
 	chunk_size = get_chunk_size(stack_size);
 	ordered_stack = order_stack(stacks->a, stack_size);
 	search_and_push(chunk_size, stack_size, stacks, ordered_stack);
+	return (chunk_size);
 }

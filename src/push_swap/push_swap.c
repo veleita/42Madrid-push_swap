@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 23:03:59 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/23 17:22:43 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/25 13:44:42 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,34 +15,23 @@
 #include <instructions.h>
 #include <args_cooker.h>
 
-static void	ask_push(t_stacks *stacks, char priority)
-{
-	if (stacks->a[0] > stacks->b[0])
-	{
-		if (priority == 'a' || stacks->a[0] < stacks->a[1])
-		{
-			do_the_push(stacks->b, stacks->a, stacks->size);
-			ft_putstr("pa\n");
-		}
-	}
-}
-
 void		push_swap(t_stacks *stacks)
 {
-	char priority;
+	char 	priority;
+	int		chunk_size;
 	int	 it = 10;
 
-	divide_chunks(stacks);
-	while (is_ordered(stacks->a, stacks->size) == false &&
-			is_empty(stacks->b, stacks->size) == false && it > 0)
+	chunk_size = divide_chunks(stacks);
+	while ((is_ordered(stacks->a, stacks->size) == false ||
+			is_empty(stacks->b, stacks->size) == false) && it > 0)
 	{
 		priority = set_priority(stacks);
 		ask_push(stacks, priority);
+		ask_swap(stacks, priority);
+		ask_rev_rotate(stacks, priority, chunk_size);
+		ask_rotate(stacks, priority);
 		it--;
 	}
-//	ask_swap(stacks, priority);
-//	ask_rotate(stacks, priority);
-//	ask_rev_rotate(stacks, priority);
 	ft_putstr("END\n");
 	return ;
 }

@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 18:50:58 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/23 17:18:30 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/23 18:25:30 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ bool	is_empty(long *stack, int size)
 
 int get_last(long *stack)
 {
-	long	last;
+	int		last;
 	int		index;
 	
 	index = 0;

@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 23:25:42 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/23 16:51:02 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/25 09:39:07 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 ** Chunks
 */
 
-void	divide_chunks(t_stacks *stacks);
+int		divide_chunks(t_stacks *stacks);
 long	*order_stack(long *stack, int stack_size);
 
 /*
@@ -27,5 +27,9 @@ long	*order_stack(long *stack, int stack_size);
 */
 
 char	set_priority(t_stacks *stacks);
+void	ask_push(t_stacks *stacks, char priority);
+void	ask_swap(t_stacks *stacks, char priority);
+void	ask_rotate(t_stacks *stacks, char priority);
+void	ask_rev_rotate(t_stacks *stacks, char priority, int chunk_size);
 
 #endif
