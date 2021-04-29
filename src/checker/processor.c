@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 15:31:10 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/23 17:06:40 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/29 15:59:17 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,17 +73,14 @@ void	swap_ins(char *instruction, t_stacks *stacks)
 
 int	process_instruction(char *instruction, t_stacks *stacks)
 {
-	char *trimmed_ins;
-
-	trimmed_ins = trim_spaces(instruction);
-	if (ft_strlen(trimmed_ins) > 3)
+	if (ft_strlen(instruction) > 3)
 		free_and_error(stacks);
 	if (*instruction == 's')
-		swap_ins(trimmed_ins, stacks);
+		swap_ins(instruction, stacks);
 	else if (*instruction == 'p')
-		push_ins(trimmed_ins, stacks);
+		push_ins(instruction, stacks);
 	else if (*instruction == 'r')
-		rotate_ins(trimmed_ins, stacks);
+		rotate_ins(instruction, stacks);
 	else
 		free_and_error(stacks);
 	return (1);

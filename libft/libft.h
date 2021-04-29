@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 13:09:17 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/23 13:59:10 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/29 15:59:34 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ long	ft_atol(const char *str);
 */
 
 char	*ft_strjoin(char const *s1, char const *s2);
-char	*trim_spaces(char *str);
 
 /*
 ** Puts

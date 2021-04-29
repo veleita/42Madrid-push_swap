@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 12:27:11 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/16 12:29:24 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/28 13:19:13 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_putstr(char *str)
 	int it;
 
 	it = 0;
-	while (str[it])
+	while (str[it] != '\0')
 	{
 		ft_putchar(str[it]);
 		it++;

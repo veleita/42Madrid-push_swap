@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 23:03:59 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/25 13:44:42 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/29 15:12:58 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@
 
 void		push_swap(t_stacks *stacks)
 {
-	char 	priority;
+//	char 	priority;
 	int	chunk_size;
-	int	 it = 2;
+//	int	 it = 2;
 
 	chunk_size = divide_chunks(stacks);
-	while ((is_ordered(stacks->a, stacks->size) == false ||
+/*	while ((is_ordered(stacks->a, stacks->size) == false ||
 			is_empty(stacks->b, stacks->size) == false) && it > 0)
 	{
 		priority = set_priority(stacks);
@@ -32,7 +32,7 @@ void		push_swap(t_stacks *stacks)
 		ask_swap(stacks, priority);
 		ask_rotate(stacks, priority);
 		it--;
-	}
+	}*/
 	ft_putstr("END\n");
 	return ;
 }

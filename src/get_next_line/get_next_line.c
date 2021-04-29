@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 12:14:21 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/16 13:34:26 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/29 15:54:13 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,6 @@
 #include <common.h>
 # include <stdlib.h>
 # include <fcntl.h>
-
-// TO DO
-// -----
-// Control returns
-// Add strchr to libft
-// Test gnl
 
 bool		read_to_buffer(int fd, char **buffer)
 {

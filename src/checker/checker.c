@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 13:37:30 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/23 17:21:00 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/29 15:14:01 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <common.h>
 #include <args_cooker.h>
 #include <bonus.h>
+#include <stdio.h>
 
 /*
 ** Iterate through every node in stack a.
@@ -39,7 +40,7 @@ void		checker(t_stacks *stacks)
 int main(int argc, char **argv)
 {
 	t_stacks	*stacks;
-	char		*instruction;
+	char		*instruction = NULL;
 	bool		verbose;
 
 	verbose = 0;
@@ -63,6 +64,7 @@ int main(int argc, char **argv)
 			return (-1);
 		}
 		free(instruction);
+		instruction = NULL;
 		if (verbose)
 			print_stacks(stacks);
 	}
