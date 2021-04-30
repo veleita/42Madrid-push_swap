@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 23:03:59 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/29 17:23:02 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/04/30 18:20:09 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,6 @@
 #include <common.h>
 #include <instructions.h>
 #include <args_cooker.h>
-
-void		find_biggest_pair(long *stack)
-{
-	int bigger;
-	int second;
-	int it;
-
-	bigger = INT_MIN;
-	second = INT_MIN;
-	it = 0;
-	while (stack[it] != VOID)
-	{
-		if (stack[it] > bigger)
-			bigger = stack[it];
-		else if (stack[it] > second)
-			second = stack[it];
-		it++;
-	}
-}
 
 void		push_swap(t_stacks *stacks)
 {
@@ -45,15 +26,17 @@ void		push_swap(t_stacks *stacks)
 	while ((is_ordered(stacks->a, stacks->size) == false ||
 			is_empty(stacks->b, stacks->size) == false))
 	{
-		if (set_priority(stacks) == 'a')
+		priority = set_priority(stacks) == 'a';
 		{
 			main_stack = stacks->a;
 			secondary_stack = stacks->b;
+			get_bigger_pair_together(main_stack);
 		}
 		else
 		{
 			main_stack = stacks->b;
 			secondary_stack = stacks->a;
+			get_smaller_pair_together(main_stack);
 		}
 		find_biggest_pair(main_stack);
 		/*
