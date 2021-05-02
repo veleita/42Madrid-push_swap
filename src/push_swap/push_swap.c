@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 23:03:59 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/30 18:20:09 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/05/02 17:19:54 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,38 +17,31 @@
 
 void		push_swap(t_stacks *stacks)
 {
-	long	*main_stack;
-	long	*secondary_stack;
-	int		chunk_size;
-//	int	 it = 2;
+	t_list	*set_of_ins_a;
+	t_list	*set_of_ins_b;
 
-	chunk_size = divide_chunks(stacks);
-	while ((is_ordered(stacks->a, stacks->size) == false ||
-			is_empty(stacks->b, stacks->size) == false))
+	divide_chunks(stacks);
+	set_of_ins_a = get_set_of_instructions_a(stacks->a, stacks->size);
+	set_of_ins_b = get_set_of_instructions_b(stacks->b);
+	while (set_of_ins_a || set_of_ins_b)
 	{
-		priority = set_priority(stacks) == 'a';
+		if (set_priority(stacks) == 'a')
 		{
-			main_stack = stacks->a;
-			secondary_stack = stacks->b;
-			get_bigger_pair_together(main_stack);
+			if (perform_instruction(set_of_ins_a->content,
+						set_of_ins_b->content, stacks->a, stacks->b) == 2)
+				set_of_ins_b = set_of_ins_b->next;
+			set_of_ins_a = set_of_ins_a->next;
 		}
 		else
 		{
-			main_stack = stacks->b;
-			secondary_stack = stacks->a;
-			get_smaller_pair_together(main_stack);
+			if (perform_instruction(set_of_ins_b->content,
+						set_of_ins_a->content, stacks->b, stacks->a) == 2)
+				set_of_ins_a = set_of_ins_a->next;
+			set_of_ins_b = set_of_ins_b->next;
 		}
-		find_biggest_pair(main_stack);
-		/*
-		ask_push(stacks, priority);
-		ask_swap(stacks, priority);
-		ask_rev_rotate(stacks, priority, chunk_size);
-		ask_swap(stacks, priority);
-		ask_rotate(stacks, priority);
-		it--;*/
 	}
-	ft_putstr("END\n");
-	return ;
+	push_to_a(stacks);
+	return (ft_putstr("END\n"));
 }
 
 int		main(int argc, char **argv)

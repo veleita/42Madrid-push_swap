@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 23:25:42 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/25 09:39:07 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/05/02 17:12:00 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,13 @@
 # define PUSH_SWAP_H
 
 # include <common.h>
+
+typedef struct	s_ins
+{
+	char		*simple_ins;
+	char		*double_ins;
+	void		(*instruction)(long*);
+}				t_ins;
 
 /*
 ** Chunks

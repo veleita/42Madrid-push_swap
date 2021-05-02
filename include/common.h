@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:04:36 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/23 17:10:04 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/05/02 17:12:23 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ void		free_and_error(t_stacks *stacks);
 ** Stacks
 */
 
-bool	is_ordered(long *stack, int size);
+bool	is_ordered(long *stack);
+bool	is_rev_ordered(long *stack);
 bool	is_empty(long *stack, int size);
 int 	get_last(long *stack);
 int		get_stack_size(long *stack);

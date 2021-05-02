@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 13:37:30 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/29 15:14:01 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/05/02 17:04:49 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 
 void		checker(t_stacks *stacks)
 {
-	if (is_ordered(stacks->a, stacks->size) && is_empty(stacks->b, stacks->size * 2))
+	if (is_ordered(stacks->a) && is_empty(stacks->b, stacks->size * 2))
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);
