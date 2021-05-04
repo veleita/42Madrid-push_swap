@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 23:03:59 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/05/02 17:19:54 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/05/04 18:22:04 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void		push_swap(t_stacks *stacks)
 	t_list	*set_of_ins_b;
 
 	divide_chunks(stacks);
-	set_of_ins_a = get_set_of_instructions_a(stacks->a, stacks->size);
+	set_of_ins_a = get_set_of_instructions_a(stacks->a);
 	set_of_ins_b = get_set_of_instructions_b(stacks->b);
 	while (set_of_ins_a || set_of_ins_b)
 	{

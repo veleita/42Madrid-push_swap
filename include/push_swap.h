@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 23:25:42 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/05/02 17:12:00 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/05/04 19:09:56 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,13 @@ typedef struct	s_ins
 
 int		divide_chunks(t_stacks *stacks);
 long	*order_stack(long *stack, int stack_size);
+
+/*
+** Get set of instructions
+*/
+
+t_list	*get_set_of_instructions_a(long *stack);
+t_list	*get_set_of_instructions_b(long *stack);
 
 /*
 ** Algorithm

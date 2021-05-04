@@ -6,13 +6,13 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 18:50:58 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/05/02 17:08:23 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/05/04 19:09:43 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <common.h>
 
-bool	is_rev_ordered(long *stack, int size)
+bool	is_rev_ordered(long *stack)
 {
 	int it;
 
@@ -25,7 +25,7 @@ bool	is_rev_ordered(long *stack, int size)
 	return (true);
 }
 
-bool	is_ordered(long *stack, int size)
+bool	is_ordered(long *stack)
 {
 	int it;
 
