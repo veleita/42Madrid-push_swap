@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 16:34:34 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/05/05 19:48:58 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/05/05 21:31:11 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,8 @@ void	get_smallest_pair_together(long *stack, t_list **set_of_ins)
 		excludes++;
 		second_index = get_smaller_index(stack, ordered_stack, excludes);
 	}
-	get_second_to_head(stack, stack[second_index], 'b', set_of_ins);
-	get_first_next_to_second(stack, 'b',
-			stack[get_smaller_index(stack, ordered_stack, excludes - 1)], set_of_ins);
+	get_first_to_head(stack, stack[smaller_index], 'a', set_of_ins);
+	get_first_next_to_second(stack, 'a', stack[second_index], set_of_ins);
 }
 
 static int	get_bigger_index(long *stack, long *ordered_stack, int last, int excludes)
@@ -89,6 +88,6 @@ void	get_biggest_pair_together(long *stack, t_list **set_of_ins)
 		excludes++;
 		second_index = get_bigger_index(stack, ordered_stack, last, excludes);
 	}
-	get_second_to_head(stack, stack[second_index], 'a', set_of_ins);
-	get_first_next_to_second(stack, 'a', stack[bigger_index], set_of_ins);
+	get_first_to_head(stack, stack[bigger_index], 'b', set_of_ins);
+	get_first_next_to_second(stack, 'b', stack[second_index], set_of_ins);
 }

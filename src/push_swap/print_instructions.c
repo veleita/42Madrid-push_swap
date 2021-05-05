@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 15:55:02 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/05/05 17:56:45 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/05/05 20:11:21 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 int print_instructions(char *main_instruction, char *secondary_instruction)
 {
-	if (ft_strcmp(main_instruction, secondary_instruction) == 1)
+	if (secondary_instruction == NULL ||
+			ft_strcmp(main_instruction, secondary_instruction) == 1)
 	{
 		ft_putstr(main_instruction);
 		return (1);

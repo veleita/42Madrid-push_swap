@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 23:03:59 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/05/05 20:01:32 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/05/05 20:07:36 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,13 @@
 #include <common.h>
 #include <instructions.h>
 #include <args_cooker.h>
+
+static char	*safe_list_access(t_list *list)
+{
+	if (list)
+		return (list->content);
+	return (NULL);
+}
 
 void		push_swap(t_stacks *stacks)
 {
@@ -26,19 +33,16 @@ void		push_swap(t_stacks *stacks)
 	while (set_of_ins_a || set_of_ins_b)
 	{
 		if (set_priority(stacks) == 'a')
-		{
-			
+		{	
 			if (print_instructions(set_of_ins_a->content,
-						tern_hack_str((set_of_ins_b),
-							set_of_ins_b->content, NULL)) == 2)
+						safe_list_access(set_of_ins_b)) == 2)
 				set_of_ins_b = set_of_ins_b->next;
 			set_of_ins_a = set_of_ins_a->next;
 		}
 		else
 		{
 			if (print_instructions(set_of_ins_b->content,
-						tern_hack_str((set_of_ins_a),
-							set_of_ins_a->content, NULL)) == 2)
+						safe_list_access(set_of_ins_a)) == 2)
 				set_of_ins_a = set_of_ins_a->next;
 			set_of_ins_b = set_of_ins_b->next;
 		}
