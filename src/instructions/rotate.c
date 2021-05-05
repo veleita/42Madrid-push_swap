@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 15:57:05 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/23 17:06:20 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/05/05 18:25:31 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	do_the_rot(long *stack)
 	last = get_last(stack);
 	save = stack[0];
 	index = 0;
-	while (stack[index] != stack[last])
+	while (index < last)
 	{
 		stack[index] = stack[index + 1];
 		index++;

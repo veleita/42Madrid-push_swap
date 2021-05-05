@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 23:03:59 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/05/04 18:22:04 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/05/05 20:01:32 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,18 @@ void		push_swap(t_stacks *stacks)
 	{
 		if (set_priority(stacks) == 'a')
 		{
-			if (perform_instruction(set_of_ins_a->content,
-						set_of_ins_b->content, stacks->a, stacks->b) == 2)
+			
+			if (print_instructions(set_of_ins_a->content,
+						tern_hack_str((set_of_ins_b),
+							set_of_ins_b->content, NULL)) == 2)
 				set_of_ins_b = set_of_ins_b->next;
 			set_of_ins_a = set_of_ins_a->next;
 		}
 		else
 		{
-			if (perform_instruction(set_of_ins_b->content,
-						set_of_ins_a->content, stacks->b, stacks->a) == 2)
+			if (print_instructions(set_of_ins_b->content,
+						tern_hack_str((set_of_ins_a),
+							set_of_ins_a->content, NULL)) == 2)
 				set_of_ins_a = set_of_ins_a->next;
 			set_of_ins_b = set_of_ins_b->next;
 		}
