@@ -6,11 +6,12 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 13:59:19 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/05/05 21:32:30 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/05/06 14:53:31 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+//#include <stdio.h>
 
 void	ft_lstadd_back(t_list **lst, t_list *newlst)
 {
@@ -25,4 +26,5 @@ void	ft_lstadd_back(t_list **lst, t_list *newlst)
 	}
 	else if (lst && newlst)
 		*lst = newlst;
+//	printf("%s\n", (char*)newlst->content);
 }

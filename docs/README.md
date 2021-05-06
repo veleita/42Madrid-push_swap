@@ -23,8 +23,8 @@ General
 - ra / rotate a  -  shift up all elements of stack a by 1. The first element becomes the last.
 - rb / rotate a  -  shift up all elements of stack b by 1. The first element becomes the last.  
 - rr  -  ra and rb at the same time.  
-- rra / reverse rotate a  - shift up all elements of stack a by 1. The first element becomes the last.
-- rrb / reverse rotate b  - shift up all elements of stack b by 1. The first element becomes the last. 
+- rra / reverse rotate a  - shift up all elements of stack a by 1. The last element becomes the first.
+- rrb / reverse rotate b  - shift up all elements of stack b by 1. The last element becomes the first. 
 - rrr  -  rra and rrb at the same time. 
 
 ---
