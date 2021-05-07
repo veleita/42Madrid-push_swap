@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 21:09:16 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/05/07 15:48:41 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/05/07 17:00:24 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static void	search_and_push(int chunk_size, int stack_size, t_stacks *stacks,
 	
 	bottom_index = 0;
 	top_index = chunk_size;
-	while (top_index <= stack_size / 2)
+	while (top_index <= stack_size)
 	{
 		push = 0;
 		while (push < chunk_size)
@@ -87,7 +87,7 @@ void		divide_chunks(t_stacks *stacks)
 	stack_size = get_stack_size(stacks->a);
 	n_chunks = 1;
 	chunk_size = stack_size / n_chunks;
-	while (chunk_size > (n_chunks * 10))
+	while (chunk_size > (n_chunks * 3))
 	{
 		n_chunks++;
 		chunk_size = stack_size / n_chunks;

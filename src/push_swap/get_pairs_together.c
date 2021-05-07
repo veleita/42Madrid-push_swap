@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 16:34:34 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/05/07 15:23:26 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/05/07 16:39:41 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,21 +52,6 @@ void	get_smallest_pair_together(long *stack, t_list **set_of_ins, t_nums *import
 	get_first_next_to_second(stack, 'b', important_numbers, set_of_ins);
 }
 
-static int	get_bigger_index(long *stack, long *ordered_stack, int last, int excludes)
-{
-	int bigger_index;
-	int it;
-
-	bigger_index = 0;
-	it = 0;
-	while (stack[it] != VOID)
-	{
-		if (stack[it] == ordered_stack[last - excludes])
-			bigger_index = it;
-		it++;
-	}
-	return (bigger_index);
-}
 
 void	get_biggest_pair_together(long *stack, t_list **set_of_ins, t_nums *important_numbers)
 {

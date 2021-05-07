@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 23:25:42 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/05/07 11:47:41 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/05/07 16:40:45 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void	get_first_next_to_second(long *stack, char stack_id, t_nums *important_numb
 									t_list **set_of_ins);
 void	get_first_to_head(long *stack, t_nums *important_numbers,
 							char stack_id, t_list **set_of_ins);
+int		get_bigger_index(long *stack, long *ordered_stack, int last, int excludes);
 int		get_dist_from_head(long *stack, int aim);
 int		get_dist_from_tail(long *stack, int aim);
 
