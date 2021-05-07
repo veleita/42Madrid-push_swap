@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 13:09:17 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/05/05 20:01:13 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/05/07 15:02:29 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ char	*ft_strjoin(char const *s1, char const *s2);
 
 void	ft_putchar(char c);
 void	ft_putstr(char *str);
+void	ft_putnstr(char *str, int n);
 void	ft_putnbr(int n);
 
 /*
@@ -99,6 +100,7 @@ t_list	*ft_lstnew(void *content);
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstadd_back(t_list **lst, t_list *newlst);
+int	ft_lstsize(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);
 
 /*

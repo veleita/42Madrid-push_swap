@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 16:25:34 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/05/06 13:42:42 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/05/07 11:51:17 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,22 +31,22 @@ static void get_from_tail(long *stack, char stack_id, t_list **set_of_ins)
 	do_the_revrot(stack);
 }
 
-void	get_first_to_head(long *stack, int first, char stack_id,
-							t_list **set_of_ins)
+void	get_first_to_head(long *stack, t_nums *important_numbers,
+							char stack_id, t_list **set_of_ins)
 {
 	int	dist_from_head;
 	int	dist_from_tail;
 
-	dist_from_head = get_dist_from_head(stack, first);
-	dist_from_tail = get_dist_from_tail(stack, first);
+	dist_from_head = get_dist_from_head(stack, important_numbers->first);
+	dist_from_tail = get_dist_from_tail(stack, important_numbers->first);
 	if (dist_from_head <= dist_from_tail)
 	{
-		while (*stack != first)
+		while (*stack != important_numbers->first)
 			get_from_head(stack, stack_id, set_of_ins);
 	}
 	else
 	{
-		while (*stack != first)
+		while (*stack != important_numbers->first)
 			get_from_tail(stack, stack_id, set_of_ins);
 	}
 }
