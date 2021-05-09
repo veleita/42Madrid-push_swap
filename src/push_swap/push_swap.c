@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 23:03:59 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/05/07 16:56:49 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/05/09 17:35:10 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,42 +22,31 @@ static char	*safe_list_access(t_list *list)
 	return (NULL);
 }
 */
+
+void		order_two(long *stack)
+{
+	if (*stack > *(stack + 1))
+	{
+		do_the_swap(stack);
+		ft_putstr("sa\n");
+	}
+}
+
 void		push_swap(t_stacks *stacks)
 {
 //	t_list	*set_of_ins_a;
 //	t_list	*set_of_ins_b;
-	int 	next;
 	int		stack_size;
-	long	*ordered_stack;
-	int		dist_from_tail;
-	int		dist_from_head;
 
-	divide_chunks(stacks);
-	while (is_empty(stacks->b, stacks->size) == false)
-	{
-		stack_size = get_stack_size(stacks->b);
-		ordered_stack = order_stack(stacks->b, stack_size);
-		next = ordered_stack[stack_size - 1];
-		dist_from_head = get_dist_from_head(stacks->b, next);
-		dist_from_tail = get_dist_from_tail(stacks->b, next);
-		if (dist_from_head < dist_from_tail)
-		{
-			while (stacks->b[0] != next)
-			{
-				do_the_rot(stacks->b);
-				ft_putstr("rb\n");
-			}
-		}
-		else
-		{
-			while (stacks->b[0] != next)
-			{
-				do_the_revrot(stacks->b);
-				ft_putstr("rrb\n");
-			}
-		}
-		ft_putstr("pa\n");
-		do_the_push(stacks->b, stacks->a, stacks->size);
+	stack_size = get_stack_size(stacks->a);
+	if (stack_size == 2)
+		order_two(stacks->a);
+	else if (stack_size == 3)
+		order_three(stacks->a);
+	else if (stack_size == 5)
+		order_five(stacks);
+	else
+		normal_insertion(t_stacks *stacks, stack_size);
 	}
 /*	set_of_ins_a = get_set_of_instructions_a(stacks->a);
 	set_of_ins_b = get_set_of_instructions_b(stacks->b);
