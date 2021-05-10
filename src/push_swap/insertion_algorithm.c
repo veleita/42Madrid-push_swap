@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 14:04:05 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/05/09 17:31:02 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/05/10 17:45:18 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,11 @@
 #include <common.h>
 #include <instructions.h>
 
-static void	insert_in_a(t_stacks *stacks, int stack_size, int next)
+static void	insert_in_a(t_stacks *stacks, int next)
 {
-	long	*ordered_stack;
 	int		dist_from_head;
 	int		dist_from_tail;
 
-	next = ordered_stack[stack_size - 1];
 	dist_from_head = get_dist_from_head(stacks->b, next);
 	dist_from_tail = get_dist_from_tail(stacks->b, next);
 	if (dist_from_head < dist_from_tail)
@@ -45,10 +43,17 @@ static void	insert_in_a(t_stacks *stacks, int stack_size, int next)
 
 void		normal_insertion(t_stacks *stacks, int stack_size)
 {
+	long	*ordered_stack;
 	int 	next;
+//	int		it = 4;
 
 	divide_chunks(stacks);
-	ordered_stack = order_stack(stacks->b, stack_size);
 	while (is_empty(stacks->b, stacks->size) == false)
-		insert_in_a(stacks, get_stack_size(stacks->b), next);
+//	while (it--)
+	{
+		stack_size = get_stack_size(stacks->b);
+		ordered_stack = order_stack(stacks->b, stack_size);
+		next = ordered_stack[stack_size - 1];
+		insert_in_a(stacks, next);
+	}
 }

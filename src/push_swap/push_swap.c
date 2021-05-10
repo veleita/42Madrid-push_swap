@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 23:03:59 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/05/09 17:35:10 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/05/10 17:42:13 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,7 @@ void		push_swap(t_stacks *stacks)
 	else if (stack_size == 5)
 		order_five(stacks);
 	else
-		normal_insertion(t_stacks *stacks, stack_size);
-	}
+		normal_insertion(stacks, stack_size);
 /*	set_of_ins_a = get_set_of_instructions_a(stacks->a);
 	set_of_ins_b = get_set_of_instructions_b(stacks->b);
 	while (set_of_ins_a || set_of_ins_b)
