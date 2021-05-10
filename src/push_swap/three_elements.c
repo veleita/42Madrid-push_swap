@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 15:32:41 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/05/10 17:10:52 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/05/10 18:40:28 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ static void	smaller_first(long *stack, long	*ordered_stack)
 {
 	if (stack[1] == ordered_stack[2])
 	{
-		do_the_rot(stack);
-		ft_putstr("ra\n");
+		do_the_revrot(stack);
+		ft_putstr("rra\n");
 		do_the_swap(stack);
 		ft_putstr("sa\n");
 	}
@@ -42,15 +42,15 @@ static void	bigger_first(long *stack, long	*ordered_stack)
 {
 	if (stack[1] == ordered_stack[0])
 	{
-		do_the_revrot(stack);
-		ft_putstr("rra\n");
-		do_the_swap(stack);
-		ft_putstr("sa\n");
+		do_the_rot(stack);
+		ft_putstr("ra\n");
 	}
 	else
 	{
 		do_the_rot(stack);
 		ft_putstr("ra\n");
+		do_the_swap(stack);
+		ft_putstr("sa\n");
 	}
 }
 

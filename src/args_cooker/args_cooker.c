@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 15:33:54 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/23 10:03:44 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/05/10 20:15:59 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,17 @@ static bool	is_small_num(char *num)
 		return (false);
 }
 
+static void	trim_zeros(char **arg)
+{
+	while (**arg == '0')
+		(*arg)++;
+}
+
 void		check_args(char **argv, int i, t_stacks *stacks)
 {
 	int	j;
 
+	trim_zeros(&argv[i]);
 	if (ft_str_isdigit(argv[i]) == false && argv[i][0] != '-')
 		free_and_error(stacks);
 	if (is_small_num(argv[i]) == false)

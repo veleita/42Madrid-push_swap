@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 13:37:30 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/05/02 17:04:49 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/05/10 18:26:56 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int main(int argc, char **argv)
 		print_stacks(stacks);
 	while (get_next_line(0, &instruction) >= 0)
 	{
-		if (ft_strcmp(instruction, "END") == 0)
+		if (!(*instruction))
 			break ;
 		ft_putstr(instruction);
 		ft_putchar('\n');

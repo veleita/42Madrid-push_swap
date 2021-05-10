@@ -6,7 +6,7 @@
 #    By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/08 18:36:36 by mzomeno-          #+#    #+#              #
-#    Updated: 2021/04/20 16:51:01 by mzomeno-         ###   ########.fr        #
+#    Updated: 2021/05/10 20:20:45 by mzomeno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,7 +75,7 @@ $(OBJ_DIR):
 	mkdir $(OBJ_DIR)/get_next_line
 
 $(LIBFT): $(LIBFT_DIR)
-	$(MAKE) -C $(LIBFT_DIR) re
+	$(MAKE) -C $(LIBFT_DIR)
 
 clean:
 		@rm -rf $(OBJ_DIR)/
