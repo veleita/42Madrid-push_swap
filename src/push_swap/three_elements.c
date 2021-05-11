@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 15:32:41 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/05/11 13:04:43 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/05/11 17:47:53 by elopez-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,12 @@ void	order_three(long *stack)
 {
 	long	*ordered_stack;
 
-	ordered_stack = order_stack(stack, 4);
+	ordered_stack = order_stack(stack, 3);
 	if (stack[0] == ordered_stack[0])
 		smaller_first(stack, ordered_stack);
 	else if (stack[0] == ordered_stack[1])
 		mid_first(stack, ordered_stack);
 	else
 		bigger_first(stack, ordered_stack);
+	free(ordered_stack);
 }

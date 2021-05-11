@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 23:03:59 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/05/11 18:12:58 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/05/11 18:20:37 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,6 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	push_swap(stacks);
+	free_stacks(stacks);
 	return (0);
 }
