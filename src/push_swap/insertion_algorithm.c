@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 14:04:05 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/05/11 13:25:13 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/05/11 17:54:30 by elopez-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,6 @@ void	normal_insertion(t_stacks *stacks, int stack_size)
 		ordered_stack = order_stack(stacks->b, stack_size);
 		next = ordered_stack[stack_size - 1];
 		insert_in_a(stacks, next);
+		free(ordered_stack);
 	}
 }

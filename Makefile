@@ -6,7 +6,7 @@
 #    By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/08 18:36:36 by mzomeno-          #+#    #+#              #
-#    Updated: 2021/05/10 20:20:45 by mzomeno-         ###   ########.fr        #
+#    Updated: 2021/05/11 17:02:57 by elopez-r         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,10 +58,11 @@ all: $(PUSH_SWAP) $(CHECKER)
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 		$(CC) $(CFLAGS) -I $(INCLUDE_DIR) -c $< -o $@
 
-$(CHECKER): $(OBJ_DIR) $(OBJS_CHECKER) $(LIBFT)
+$(CHECKER): $(OBJ_DIR) $(OBJS_CHECKER) $(LIBFT_DIR)$(LIBFT)
+
 	$(CC) $(OBJS_CHECKER) $(LIBFT_DIR)$(LIBFT) $(CFLAGS) -o $(CHECKER)
 
-$(PUSH_SWAP): $(OBJ_DIR) $(OBJS_PUSH_SWAP) $(LIBFT)
+$(PUSH_SWAP): $(OBJ_DIR) $(OBJS_PUSH_SWAP) $(LIBFT_DIR)$(LIBFT)
 	$(CC) $(OBJS_PUSH_SWAP) $(LIBFT_DIR)$(LIBFT) $(CFLAGS) -o $(PUSH_SWAP)
 
 $(OBJ_DIR):
@@ -74,8 +75,9 @@ $(OBJ_DIR):
 	mkdir $(OBJ_DIR)/bonus
 	mkdir $(OBJ_DIR)/get_next_line
 
-$(LIBFT): $(LIBFT_DIR)
+$(LIBFT_DIR)$(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
+	
 
 clean:
 		@rm -rf $(OBJ_DIR)/

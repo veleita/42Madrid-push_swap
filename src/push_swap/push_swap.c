@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 23:03:59 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/05/11 13:05:41 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/05/11 17:40:32 by elopez-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,6 @@ int	main(int argc, char **argv)
 	if (!stacks)
 		return (-1);
 	push_swap(stacks);
+	free_stacks(stacks);
 	return (0);
 }

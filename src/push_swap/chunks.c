@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 21:09:16 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/05/11 13:23:31 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/05/11 17:51:15 by elopez-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,5 +103,6 @@ void	divide_chunks(t_stacks *stacks)
 		do_the_push(stacks->a, stacks->b, stacks->size);
 		ft_putstr("pb\n");
 	}
+	free(ordered_stack);
 	return ;
 }

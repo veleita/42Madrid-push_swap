@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 15:33:54 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/05/11 13:37:56 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/05/11 17:29:46 by elopez-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,13 @@ void	check_args(char **argv, int i, t_stacks *stacks)
 		free_and_error(stacks);
 	if (is_small_num(argv[i]) == false)
 		free_and_error(stacks);
-	j = i;
-	while (ft_strcmp(argv[j--], argv[0]))
+	j = i - 1;
+	while (j >= 0)
+	{
 		if (ft_strcmp(argv[j], argv[i]) == 0)
 			free_and_error(stacks);
+		j--;
+	}
 }
 
 t_stacks	*create_stacks(int args)
@@ -55,7 +58,7 @@ t_stacks	*create_stacks(int args)
 	stacks = (t_stacks *)malloc(sizeof(*stacks));
 	stacks->a = (long *)malloc(size * sizeof(long));
 	stacks->b = (long *)malloc(size * sizeof(long));
-	while (size-- >= 0)
+	while (--size >= 0)
 	{
 		stacks->a[size] = VOID;
 		stacks->b[size] = VOID;
@@ -81,7 +84,7 @@ t_stacks	*args_cooker(int argc, int flags, char **argv)
 		return (0);
 	stacks = create_stacks(argc - flags - 1);
 	i = flags;
-	while (argv[++i])
+	while (++i < argc)
 	{
 		check_args(argv, i, stacks);
 		stacks->a[i - (1 + flags)] = ft_atoi(argv[i]);

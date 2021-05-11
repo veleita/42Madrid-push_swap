@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 16:04:39 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/05/11 13:30:48 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/05/11 17:42:22 by elopez-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,4 +99,5 @@ void	order_five(t_stacks *stacks)
 		put_in_its_place(stacks, ordered_stack, it);
 	}
 	final_rotate(stacks->a, ordered_stack);
+	free(ordered_stack);
 }
