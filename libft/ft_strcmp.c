@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 13:48:29 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/05/11 17:36:23 by elopez-r         ###   ########.fr       */
+/*   Updated: 2021/05/11 18:30:22 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int	ft_strcmp(const char *s1, const char *s2)
 		s2++;
 	}
 	while (*(s1++))
-			faults++;
+		faults++;
 	while (*(s2++))
-			faults++;
+		faults++;
 	return (faults);
 }

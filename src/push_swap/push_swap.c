@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 23:03:59 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/05/11 18:20:37 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/05/11 18:30:45 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	order_two(long *stack)
 
 static bool	is_already_ordered(long *stack)
 {
-	int it;
+	int	it;
 
 	it = 0;
 	while (stack[++it] != VOID)
