@@ -6,19 +6,19 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 12:14:21 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/29 15:54:13 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/05/11 13:36:05 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <get_next_line.h>
 #include <common.h>
-# include <stdlib.h>
-# include <fcntl.h>
+#include <stdlib.h>
+#include <fcntl.h>
 
-bool		read_to_buffer(int fd, char **buffer)
+bool	read_to_buffer(int fd, char **buffer)
 {
 	int	len;
-	
+
 	len = read(fd, *buffer, BUFFER_SIZE + 1);
 	if (len < 0)
 		simple_error();
@@ -31,15 +31,15 @@ bool		read_to_buffer(int fd, char **buffer)
 	}
 }
 
-int			empty_file(char **line)
+int	empty_file(char **line)
 {
 	*line = ft_strdup("");
 	return (0);
 }
 
-int			complete_line(int fd, char *buffer, char *file[NUM_FDS])
+int	complete_line(int fd, char *buffer, char *file[NUM_FDS])
 {
-	char *tmp;
+	char	*tmp;
 
 	while (!ft_strchr(buffer, '\n'))
 	{
@@ -52,9 +52,9 @@ int			complete_line(int fd, char *buffer, char *file[NUM_FDS])
 	return (ft_strchr_index(file[fd], '\n'));
 }
 
-int			save_line(char **line, char *file[NUM_FDS], int fd, int newline)
+int	save_line(char **line, char *file[NUM_FDS], int fd, int newline)
 {
-	char *tmp;
+	char	*tmp;
 
 	*line = ft_substr(file[fd], 0, newline - 1);
 	tmp = ft_strdup(&file[fd][newline]);
@@ -66,13 +66,13 @@ int			save_line(char **line, char *file[NUM_FDS], int fd, int newline)
 		return (1);
 }
 
-int			get_next_line(int fd, char **line)
+int	get_next_line(int fd, char **line)
 {
 	char		*buffer;
 	static char	*file[NUM_FDS];
 	int			newline;
 
-	buffer = (char*)ft_calloc(sizeof(char), BUFFER_SIZE + 1);
+	buffer = (char *)ft_calloc(sizeof(char), BUFFER_SIZE + 1);
 	if (!buffer || !line || fd < 0)
 		simple_error();
 	if (file[fd] == NULL)

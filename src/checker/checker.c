@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 13:37:30 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/05/10 18:26:56 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/05/11 16:22:53 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 ** Else, return true.
 */
 
-void		checker(t_stacks *stacks)
+void	checker(t_stacks *stacks)
 {
 	if (is_ordered(stacks->a) && is_empty(stacks->b, stacks->size * 2))
 		write(1, "OK\n", 3);
@@ -31,27 +31,11 @@ void		checker(t_stacks *stacks)
 		write(1, "KO\n", 3);
 }
 
-/*
-** Create stacks a and b.
-** Read and execute instructions from stdin.
-** Check if stack a is ordered and stack b is empty.
-*/
-
-int main(int argc, char **argv)
+static void	executor(t_stacks *stacks, bool verbose)
 {
-	t_stacks	*stacks;
-	char		*instruction = NULL;
-	bool		verbose;
+	char	*instruction;
 
-	verbose = 0;
-	if (argc > 1 && argv[1][0] == '-')
-		if (argv[1][1] == 'v' && argv[1][2] == '\0')
-			verbose = 1;
-	stacks = args_cooker(argc, verbose, argv);
-	if (!stacks)
-		return (-1);
-	if (verbose)
-		print_stacks(stacks);
+	instruction = NULL;
 	while (get_next_line(0, &instruction) >= 0)
 	{
 		if (!(*instruction))
@@ -61,13 +45,44 @@ int main(int argc, char **argv)
 		if (process_instruction(instruction, stacks) == -1)
 		{
 			free(instruction);
-			return (-1);
+			return ;
 		}
 		free(instruction);
 		instruction = NULL;
 		if (verbose)
 			print_stacks(stacks);
 	}
+}
+
+static bool	set_verbose(int argc, char **argv)
+{
+	bool	verbose;
+
+	verbose = false;
+	if (argc > 1 && argv[1][0] == '-')
+		if (argv[1][1] == 'v' && argv[1][2] == '\0')
+			verbose = true;
+	return (verbose);
+}
+
+/*
+** Create stacks a and b.
+** Read and execute instructions from stdin.
+** Check if stack a is ordered and stack b is empty.
+*/
+
+int	main(int argc, char **argv)
+{
+	t_stacks	*stacks;
+	bool		verbose;
+
+	verbose = set_verbose(argc, argv);
+	stacks = args_cooker(argc, verbose, argv);
+	if (!stacks)
+		return (-1);
+	if (verbose)
+		print_stacks(stacks);
+	executor(stacks, verbose);
 	checker(stacks);
 	return (0);
 }

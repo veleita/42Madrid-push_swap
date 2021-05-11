@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 15:33:54 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/05/10 20:15:59 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/05/11 13:37:56 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 static bool	is_small_num(char *num)
 {
 	if (ft_strlen(num) < 11)
-	   return (true);
-	else if (ft_strlen(num) == 11 &&
-		(ft_atol(num) <= INT_MAX && ft_atol(num) >= INT_MIN))
-		return(true);
+		return (true);
+	else if (ft_strlen(num) == 11
+		&& (ft_atol(num) <= INT_MAX && ft_atol(num) >= INT_MIN))
+		return (true);
 	else
 		return (false);
 }
@@ -31,7 +31,7 @@ static void	trim_zeros(char **arg)
 		(*arg)++;
 }
 
-void		check_args(char **argv, int i, t_stacks *stacks)
+void	check_args(char **argv, int i, t_stacks *stacks)
 {
 	int	j;
 
@@ -52,9 +52,9 @@ t_stacks	*create_stacks(int args)
 	int			size;
 
 	size = args * 2 + 1;
-	stacks = (t_stacks*)malloc(sizeof(*stacks));
-	stacks->a = (long*)malloc(size * sizeof(long));
-	stacks->b = (long*)malloc(size * sizeof(long));
+	stacks = (t_stacks *)malloc(sizeof(*stacks));
+	stacks->a = (long *)malloc(size * sizeof(long));
+	stacks->b = (long *)malloc(size * sizeof(long));
 	while (size-- >= 0)
 	{
 		stacks->a[size] = VOID;
@@ -72,7 +72,7 @@ t_stacks	*create_stacks(int args)
 ** return with an error.
 */
 
-t_stacks *args_cooker(int argc, int flags, char **argv)
+t_stacks	*args_cooker(int argc, int flags, char **argv)
 {
 	t_stacks	*stacks;
 	int			i;

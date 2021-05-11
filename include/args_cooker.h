@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 16:50:45 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/20 16:50:49 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/05/11 16:03:40 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 
 # include <common.h>
 
-t_stacks *args_cooker(int argc, int flags, char **argv);
+t_stacks	*args_cooker(int argc, int flags, char **argv);
 
 #endif

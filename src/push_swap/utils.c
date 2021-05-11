@@ -6,13 +6,13 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 15:39:09 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/05/10 15:27:47 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/05/11 13:20:39 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-int		get_dist_from_head(long *stack, int aim)
+int	get_dist_from_head(long *stack, int aim)
 {
 	int	dist;
 
@@ -22,7 +22,7 @@ int		get_dist_from_head(long *stack, int aim)
 	return (dist);
 }
 
-int		get_dist_from_tail(long *stack, int aim)
+int	get_dist_from_tail(long *stack, int aim)
 {
 	int	dist;
 	int	last;
@@ -36,8 +36,8 @@ int		get_dist_from_tail(long *stack, int aim)
 
 int	get_bigger_index(long *stack, long *ordered_stack, int last, int excludes)
 {
-	int bigger_index;
-	int it;
+	int	bigger_index;
+	int	it;
 
 	bigger_index = 0;
 	it = 0;

@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 15:30:57 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/12 15:50:51 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/05/11 13:01:21 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,11 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	char		*pdst;
 	const char	*psrc;
 
-	pdst = (char*)dst;
-	psrc = (const char*)src;
+	pdst = (char *)dst;
+	psrc = (const char *)src;
 	if (src == dst)
 		return (dst);
 	while (n--)
 		*(pdst++) = *(psrc++);
 	return (dst);
 }
-

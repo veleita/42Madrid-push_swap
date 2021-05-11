@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 15:31:10 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/29 15:59:17 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/05/11 16:01:24 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ void	revrotate_ins(char *instruction, t_stacks *stacks)
 		do_the_revrot(stacks->b);
 	else if (*(instruction + 2) == 'r' && *(instruction + 3) == '\0')
 	{
-		do_the_revrot((long*)stacks->a);
+		do_the_revrot((long *)stacks->a);
 		do_the_revrot(stacks->b);
 	}
-		else
-			free_and_error(stacks);
+	else
+		free_and_error(stacks);
 }
 
 void	rotate_ins(char *instruction, t_stacks *stacks)
@@ -49,9 +49,9 @@ void	rotate_ins(char *instruction, t_stacks *stacks)
 void	push_ins(char *instruction, t_stacks *stacks)
 {
 	if (*(instruction + 1) == 'a')
-		do_the_push(stacks->b, (long*)stacks->a, stacks->size);
+		do_the_push(stacks->b, (long *)stacks->a, stacks->size);
 	else if (*(instruction + 1) == 'b')
-		do_the_push((long*)stacks->a, stacks->b, stacks->size);
+		do_the_push((long *)stacks->a, stacks->b, stacks->size);
 	else
 		free_and_error(stacks);
 }
@@ -59,12 +59,12 @@ void	push_ins(char *instruction, t_stacks *stacks)
 void	swap_ins(char *instruction, t_stacks *stacks)
 {
 	if (*(instruction + 1) == 'a')
-		do_the_swap((long*)stacks->a);
+		do_the_swap((long *)stacks->a);
 	else if (*(instruction + 1) == 'b')
 		do_the_swap(stacks->b);
 	else if (*(instruction + 1) == 's')
 	{
-		do_the_swap((long*)stacks->a);
+		do_the_swap((long *)stacks->a);
 		do_the_swap(stacks->b);
 	}
 	else

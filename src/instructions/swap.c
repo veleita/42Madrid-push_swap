@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 15:40:45 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/19 23:21:57 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/05/11 13:56:22 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void	do_the_swap(long *stack)
 {
-	int save;
+	int	save;
 
 	if (stack[1] == VOID)
 		return ;

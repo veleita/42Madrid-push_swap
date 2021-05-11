@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 15:52:56 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/05/07 16:39:04 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/05/11 16:20:16 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 static void	push_to_void(long *src, long *dst, int size)
 {
-	int index;
-	
+	int	index;
+
 	dst[0] = src[0];
 	index = 0;
 	while (index < size)
@@ -26,7 +26,7 @@ static void	push_to_void(long *src, long *dst, int size)
 	}
 }
 
-static void	rotate_stack(long *prev, long *save, int index, long *dst, long*src)
+static void	rotate_stack(long *prev, long *save, int index, long *dst)
 {
 	if (*prev != VOID)
 	{
@@ -34,23 +34,20 @@ static void	rotate_stack(long *prev, long *save, int index, long *dst, long*src)
 		dst[index] = *prev;
 		*prev = *save;
 	}
-	src[index] = src[index + 1];
 }
 
-void		do_the_push(long *src, long *dst, int size)
+void	do_the_push(long *src, long *dst, int size)
 {
-	long save;
-	long prev;
-	int index;
+	long	save;
+	long	prev;
+	int		index;
 
-	if (src[0] == VOID)
-		return ;
-	else if (dst[0] == VOID)
+	if (src[0] != VOID && dst[0] == VOID)
 		push_to_void(src, dst, size);
-	else
+	else if (dst[0] != VOID)
 	{
-		index = 0;
-		while (index < size)
+		index = -1;
+		while (++index < size)
 		{
 			if (index == 0)
 			{
@@ -59,8 +56,11 @@ void		do_the_push(long *src, long *dst, int size)
 				src[0] = src[1];
 			}
 			else
-				rotate_stack(&prev, &save, index, dst, src);
-			index++;
+			{
+				rotate_stack(&prev, &save, index, dst);
+				src[index] = src[index + 1];
+			}
 		}
 	}
+	return ;
 }

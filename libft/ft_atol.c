@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 12:51:05 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/09 12:58:35 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/05/11 12:54:06 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ long	ft_atol(const char *str)
 
 	sign = 1;
 	i = 0;
-	while (*str == '\t' || *str == '\n' || *str == '\v' || *str == '\f' ||
-			*str == '\r' || *str == ' ')
+	while (*str == '\t' || *str == '\n' || *str == '\v' || *str == '\f'
+		|| *str == '\r' || *str == ' ')
 		str++;
 	if (*str == '+')
 		str++;

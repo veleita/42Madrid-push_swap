@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 15:32:41 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/05/10 18:40:28 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/05/11 13:04:43 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static void	bigger_first(long *stack, long	*ordered_stack)
 	}
 }
 
-void		order_three(long *stack)
+void	order_three(long *stack)
 {
 	long	*ordered_stack;
 

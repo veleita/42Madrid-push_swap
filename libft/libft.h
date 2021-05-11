@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 13:09:17 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/05/07 15:02:29 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/05/11 12:59:55 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,13 +100,13 @@ t_list	*ft_lstnew(void *content);
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstadd_back(t_list **lst, t_list *newlst);
-int	ft_lstsize(t_list *lst);
+int		ft_lstsize(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);
 
 /*
 ** Ternary
 */
 
-char *tern_hack_str(bool condition, char *true_str, char *false_str);
+char	*tern_str(bool condition, char *true_str, char *false_str);
 
 #endif

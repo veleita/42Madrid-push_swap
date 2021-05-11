@@ -6,13 +6,13 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 20:50:35 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/16 12:01:54 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/05/11 16:05:10 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BONUS_H
 # define BONUS_H
 
-void print_stacks(t_stacks *stacks);
+void	print_stacks(t_stacks *stacks);
 
 #endif

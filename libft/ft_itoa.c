@@ -6,19 +6,19 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 13:24:13 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/23 14:33:15 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/05/11 12:54:50 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-char *ft_itoa(int i)
+char	*ft_itoa(int i)
 {
-	char 	*a;
+	char	*a;
 	int		it;
 
 	it = 0;
-	a = (char*)malloc(ft_intlen(i) * sizeof(char) + 1);
+	a = (char *)malloc(ft_intlen(i) * sizeof(char) + 1);
 	while (i > 9)
 	{
 		a[it++] = '0' + 1 % 10;

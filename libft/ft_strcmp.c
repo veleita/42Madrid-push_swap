@@ -6,15 +6,15 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 13:48:29 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/05/07 15:03:55 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/05/11 13:01:53 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_strcmp(const char *s1, const char *s2)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	int faults;
+	int	faults;
 
 	if (!s1 || !s2)
 		return (-1);

@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 21:09:16 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/05/10 17:44:57 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/05/11 13:23:31 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ static bool	found(long *ordered_stack, int bottom_index, int top_index, int num)
 	return (false);
 }
 
-static void	rotate_to_win(int distance, char *instruction, void (rotate)(long*), long *stack)
+static void	rotate_to_win(int distance, char *instruction, void (rotate)(long*),
+		long *stack)
 {
 	while (--distance >= 0)
 	{
@@ -34,18 +35,21 @@ static void	rotate_to_win(int distance, char *instruction, void (rotate)(long*),
 	}
 }
 
-static void	find_in_chunk(long *ordered_stack, int bottom_index, int top_index, long *stack)
+static void	find_in_chunk(long *ordered_stack, int bottom_index, int top_index,
+		long *stack)
 {
-	int dist_from_head;
-	int dist_from_tail;
-	int last;
+	int	dist_from_head;
+	int	dist_from_tail;
+	int	last;
 
 	dist_from_head = 0;
 	dist_from_tail = 1;
 	last = get_last(stack);
-	while (found(ordered_stack, bottom_index, top_index, stack[dist_from_head]) == false)
+	while (found(ordered_stack, bottom_index, top_index,
+			stack[dist_from_head]) == false)
 		dist_from_head++;
-	while (found(ordered_stack, bottom_index, top_index, stack[last - dist_from_tail + 1]) == false)
+	while (found(ordered_stack, bottom_index, top_index,
+			stack[last - dist_from_tail + 1]) == false)
 		dist_from_tail++;
 	if (dist_from_head < dist_from_tail - 1)
 		rotate_to_win(dist_from_head, "ra\n", do_the_rot, stack);
@@ -59,7 +63,7 @@ static void	search_and_push(int chunk_size, int stack_size, t_stacks *stacks,
 	int		top_index;
 	int		bottom_index;
 	int		push;
-	
+
 	bottom_index = 0;
 	top_index = chunk_size;
 	while (top_index <= stack_size)
@@ -77,11 +81,11 @@ static void	search_and_push(int chunk_size, int stack_size, t_stacks *stacks,
 	}
 }
 
-void		divide_chunks(t_stacks *stacks)
+void	divide_chunks(t_stacks *stacks)
 {
-	int	stack_size;
-	int	chunk_size;
-	int	n_chunks;
+	int		stack_size;
+	int		chunk_size;
+	int		n_chunks;
 	long	*ordered_stack;
 
 	stack_size = get_stack_size(stacks->a);

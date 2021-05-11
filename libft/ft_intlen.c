@@ -6,15 +6,15 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 13:42:57 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/23 13:58:31 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/05/11 12:52:36 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-int		ft_intlen(int i)
+int	ft_intlen(int i)
 {
-	int len;
+	int	len;
 
 	len = 1;
 	if (i == INT_MIN)

@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:04:36 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/05/07 16:43:24 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/05/11 16:06:06 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 # define VOID 2147483648
 
-typedef struct	s_stacks
+typedef struct s_stacks
 {
 	long		*a;
 	long		*b;
@@ -37,10 +37,10 @@ void		free_and_error(t_stacks *stacks);
 ** Stacks
 */
 
-bool	is_ordered(long *stack);
-bool	is_rev_ordered(long *stack);
-bool	is_empty(long *stack, int size);
-int 	get_last(long *stack);
-int		get_stack_size(long *stack);
+bool		is_ordered(long *stack);
+bool		is_rev_ordered(long *stack);
+bool		is_empty(long *stack, int size);
+int			get_last(long *stack);
+int			get_stack_size(long *stack);
 
 #endif

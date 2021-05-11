@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 15:58:57 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/19 23:15:24 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/05/11 13:58:26 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 void	do_the_revrot(long *stack)
 {
-	int index;
-	long last;
+	int		index;
+	long	last;
 
 	if (*stack == VOID)
 		return ;

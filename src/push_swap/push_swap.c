@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 23:03:59 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/05/10 18:13:13 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/05/11 13:05:41 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,8 @@
 #include <common.h>
 #include <instructions.h>
 #include <args_cooker.h>
-/*
-static char	*safe_list_access(t_list *list)
-{
-	if (list)
-		return (list->content);
-	return (NULL);
-}
-*/
 
-void		order_two(long *stack)
+static void	order_two(long *stack)
 {
 	if (*stack > *(stack + 1))
 	{
@@ -32,7 +24,7 @@ void		order_two(long *stack)
 	}
 }
 
-void		push_swap(t_stacks *stacks)
+void	push_swap(t_stacks *stacks)
 {
 	int		stack_size;
 
@@ -48,7 +40,7 @@ void		push_swap(t_stacks *stacks)
 	return ;
 }
 
-int		main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_stacks	*stacks;
 

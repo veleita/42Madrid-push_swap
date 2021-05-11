@@ -6,11 +6,9 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 16:53:34 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/05/07 13:58:32 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/05/11 13:00:34 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
 #include "libft.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)

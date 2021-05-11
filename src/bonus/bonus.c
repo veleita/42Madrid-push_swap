@@ -6,15 +6,15 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 19:25:18 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/04/29 15:54:39 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/05/11 13:38:39 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <common.h>
 
-void print_stacks(t_stacks *stacks)
+void	print_stacks(t_stacks *stacks)
 {
-	int i;
+	int	i;
 
 	ft_putstr("Stack a:");
 	i = 0;

@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 15:55:02 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/05/07 15:05:55 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/05/11 13:03:57 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 
 static char	*join_instructions(char *ins1)
 {
-	char 	*joined;
+	char	*joined;
 	int		len;
 
 	len = ft_strlen(ins1);
-	joined = (char*)malloc(len);
+	joined = (char *)malloc(len);
 	joined[len] = '\0';
 	len--;
 	joined[len] = '\n';
@@ -30,12 +30,12 @@ static char	*join_instructions(char *ins1)
 	return (joined);
 }
 
-int print_instructions(char *main_instruction, char *secondary_instruction)
+int	print_instructions(char *main_instruction, char *secondary_instruction)
 {
-	char *joined;
+	char	*joined;
 
-	if (secondary_instruction == NULL ||
-			ft_strcmp(main_instruction, secondary_instruction) > 1)
+	if (secondary_instruction == NULL
+		|| ft_strcmp(main_instruction, secondary_instruction) > 1)
 	{
 		ft_putstr(main_instruction);
 		return (1);

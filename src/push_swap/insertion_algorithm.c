@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 14:04:05 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/05/10 17:45:18 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/05/11 13:25:13 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,13 @@ static void	insert_in_a(t_stacks *stacks, int next)
 	ft_putstr("pa\n");
 }
 
-void		normal_insertion(t_stacks *stacks, int stack_size)
+void	normal_insertion(t_stacks *stacks, int stack_size)
 {
 	long	*ordered_stack;
-	int 	next;
-//	int		it = 4;
+	int		next;
 
 	divide_chunks(stacks);
 	while (is_empty(stacks->b, stacks->size) == false)
-//	while (it--)
 	{
 		stack_size = get_stack_size(stacks->b);
 		ordered_stack = order_stack(stacks->b, stack_size);

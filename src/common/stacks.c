@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 18:50:58 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/05/07 11:42:52 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/05/11 16:02:14 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 bool	is_rev_ordered(long *stack)
 {
-	int it;
+	int	it;
 
 	it = 0;
 	while (stack[++it] != VOID)
@@ -27,7 +27,7 @@ bool	is_rev_ordered(long *stack)
 
 bool	is_ordered(long *stack)
 {
-	int it;
+	int	it;
 
 	it = 0;
 	while (stack[++it] != VOID)
@@ -40,7 +40,7 @@ bool	is_ordered(long *stack)
 
 bool	is_empty(long *stack, int size)
 {
-	int it;
+	int	it;
 
 	it = 0;
 	while (it < size)
@@ -52,11 +52,11 @@ bool	is_empty(long *stack, int size)
 	return (true);
 }
 
-int get_last(long *stack)
+int	get_last(long *stack)
 {
 	int		last;
 	int		index;
-	
+
 	index = 0;
 	while (stack[index] != VOID)
 		index++;
@@ -66,7 +66,7 @@ int get_last(long *stack)
 
 int	get_stack_size(long *stack)
 {
-	int size;
+	int	size;
 
 	size = 0;
 	while (stack[size] != VOID)
