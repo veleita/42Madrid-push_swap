@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 15:33:54 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/05/11 13:37:56 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/05/11 16:28:12 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ t_stacks	*create_stacks(int args)
 	stacks = (t_stacks *)malloc(sizeof(*stacks));
 	stacks->a = (long *)malloc(size * sizeof(long));
 	stacks->b = (long *)malloc(size * sizeof(long));
-	while (size-- >= 0)
+	while (--size >= 0)
 	{
 		stacks->a[size] = VOID;
 		stacks->b[size] = VOID;

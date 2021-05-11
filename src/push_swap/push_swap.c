@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 23:03:59 by mzomeno-          #+#    #+#             */
-/*   Updated: 2021/05/11 13:05:41 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2021/05/11 18:12:58 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,19 @@ static void	order_two(long *stack)
 		do_the_swap(stack);
 		ft_putstr("sa\n");
 	}
+}
+
+static bool	is_already_ordered(long *stack)
+{
+	int it;
+
+	it = 0;
+	while (stack[++it] != VOID)
+	{
+		if (stack[it] < stack[it - 1])
+			return (false);
+	}
+	return (true);
 }
 
 void	push_swap(t_stacks *stacks)
@@ -46,7 +59,12 @@ int	main(int argc, char **argv)
 
 	stacks = args_cooker(argc, 0, argv);
 	if (!stacks)
-		return (-1);
+		return (1);
+	if (is_already_ordered(stacks->a) == true)
+	{
+		free_stacks(stacks);
+		return (0);
+	}
 	push_swap(stacks);
 	return (0);
 }
